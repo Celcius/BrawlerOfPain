@@ -2,3 +2,5 @@
 /Temp/
 *.exe
 /*_Data/
+/obj/
+*.suo

@@ -11,6 +11,8 @@ public class MapGeneration : MonoBehaviour {
     private int MAP_HEIGHT = 20;
     [SerializeField]
     private int HOLE_MARGIN = 2;
+    [SerializeField]
+    private int DEATH_MARGIN = 2;
 
     [SerializeField]
     private float _tileScale = 1.0f;
@@ -58,8 +60,8 @@ public class MapGeneration : MonoBehaviour {
     {
         GameObject go = (GameObject)Instantiate(Resources.Load("DeathZone"));
         DeathZone deathZone = go.GetComponent<DeathZone>();
-        deathZone.transform.localScale = new Vector3(MAP_WIDTH * _tileScale, 1, MAP_HEIGHT * _tileScale);
-        deathZone.transform.position = new Vector3(MAP_WIDTH * _tileScale / 2, 0, MAP_HEIGHT * _tileScale / 2);
+        deathZone.transform.localScale = new Vector3((MAP_WIDTH + DEATH_MARGIN) * _tileScale, 1, (MAP_HEIGHT + DEATH_MARGIN) * _tileScale);
+        deathZone.transform.position = new Vector3((MAP_WIDTH) * _tileScale / 2, -2, (MAP_HEIGHT) * _tileScale / 2);
 
     }
 }

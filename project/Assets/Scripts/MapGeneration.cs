@@ -6,16 +6,20 @@ using System.Collections;
 public class MapGeneration : MonoBehaviour {
     
     [SerializeField]
-    private const int MAP_WIDTH = 20;
+    private int MAP_WIDTH = 20;
     [SerializeField]
-    private const int MAP_HEIGHT = 20;
+    private int MAP_HEIGHT = 20;
     [SerializeField]
     private int HOLE_MARGIN = 2;
 
-    string[,] map = new string[MAP_WIDTH, MAP_HEIGHT];
+    [SerializeField]
+    private float _tileScale = 1.0f;
+
+    string[,] map; 
                    
 	// Use this for initialization
 	void Start () {
+        map = new string[MAP_WIDTH, MAP_HEIGHT];
         initializeGrid();
         setupGrid();
         setupDeathColider();
@@ -46,12 +50,16 @@ public class MapGeneration : MonoBehaviour {
             for(int y = 0; y < MAP_HEIGHT; y++)
             {
                 string gridCode = map[x, y];
-                GridElement.createGridElement(gridCode, x, y);
+                GridElement.createGridElement(gridCode, x, y, _tileScale);
             }
     }
 
     void setupDeathColider()
     {
+        GameObject go = (GameObject)Instantiate(Resources.Load("DeathZone"));
+        DeathZone deathZone = go.GetComponent<DeathZone>();
+        deathZone.transform.localScale = new Vector3(MAP_WIDTH * _tileScale, 1, MAP_HEIGHT * _tileScale);
+        deathZone.transform.position = new Vector3(MAP_WIDTH * _tileScale / 2, 0, MAP_HEIGHT * _tileScale / 2);
 
     }
 }

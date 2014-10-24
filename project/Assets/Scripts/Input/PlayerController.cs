@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
         get { return pressed(ACTIONS.JUMP); }
     }
 
+	public Vector2 Direction;
     public int gamepadNum = 0;
 	public InputDevice inputDevice;
 
@@ -63,6 +64,8 @@ public class PlayerController : MonoBehaviour
             _actions.Add(val, obj);
             _state.Add(val, false);
         }
+
+		Direction = new Vector2 ();
     }
 
     // Update is called once per frame
@@ -189,14 +192,36 @@ public class PlayerController : MonoBehaviour
         _state[ACTIONS.RIGHT] |= inputDevice.Direction.Right;
         _state[ACTIONS.DOWN] |= inputDevice.Direction.Down;
         _state[ACTIONS.UP] |= inputDevice.Direction.Up;
+		Direction.Set (inputDevice.Direction.X, inputDevice.Direction.Y);
     }
 
     void processKeyboard()
     {
+		Debug.Log ("processing keyboard");
         _state[ACTIONS.JUMP] |= Input.GetKey(ControllerMapping.Keyboards[controller].JUMP);
         _state[ACTIONS.UP] |= Input.GetKey(ControllerMapping.Keyboards[controller].UP);
         _state[ACTIONS.LEFT] |= Input.GetKey(ControllerMapping.Keyboards[controller].LEFT);
         _state[ACTIONS.RIGHT] |= Input.GetKey(ControllerMapping.Keyboards[controller].RIGHT);
         _state[ACTIONS.DOWN] |= Input.GetKey(ControllerMapping.Keyboards[controller].DOWN);
+
+		float dX = 0f;
+		float dY = 0f;
+		if (LEFT) {
+			dX -= 1.0f;
+			Debug.Log ("LEFT");
+		}
+		if (RIGHT)
+		{
+			dX += 1.0f;
+			Debug.Log ("RIGHT");
+		}
+		if (UP)
+		    dY += 1.0f;
+		if (DOWN)
+		    dY -= 1.0f;
+
+		Direction.Set (dX, dY);
+		Direction.Normalize();
+		Debug.Log ("Keyboard dir: " + Direction);
     }
 }

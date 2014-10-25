@@ -1,7 +1,8 @@
 fileFormatVersion: 2
 guid: 6ecb814d793de41668f9cab8c3506c6a
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: run.cam_90.0007
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

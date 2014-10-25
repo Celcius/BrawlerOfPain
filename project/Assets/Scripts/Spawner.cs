@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour {
 	
     public void spawnPlayer(int num)
     {
-        GameObject ob = (GameObject)Instantiate(Resources.Load("GenericPlayer"));
+		GameObject ob = (GameObject)Instantiate(Resources.Load("Prefabs/GenericPlayer"));
         _player = ob.GetComponent<Player>();
         _player.setSpawner(this);
         _player.setNum(num);

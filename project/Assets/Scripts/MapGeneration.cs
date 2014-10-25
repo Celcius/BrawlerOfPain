@@ -102,7 +102,7 @@ public class MapGeneration : MonoBehaviour {
 
     void setupDeathColider()
     {
-        GameObject go = (GameObject)Instantiate(Resources.Load("DeathZone"));
+		GameObject go = (GameObject)Instantiate(Resources.Load("Prefabs/DeathZone"));
         DeathZone deathZone = go.GetComponent<DeathZone>();
         deathZone.transform.localScale = new Vector3((MAP_WIDTH + DEATH_MARGIN) * _tileScale, 1, (MAP_HEIGHT + DEATH_MARGIN) * _tileScale);
         deathZone.transform.position = new Vector3((MAP_WIDTH) * _tileScale / 2, -4, (MAP_HEIGHT) * _tileScale / 2);
@@ -125,7 +125,7 @@ public class MapGeneration : MonoBehaviour {
     {
         for(int i = 0; i < PLAYER_COUNT; i ++)
         {
-            GameObject ob = (GameObject)Instantiate(Resources.Load("Spawner"));
+			GameObject ob = (GameObject)Instantiate(Resources.Load("Prefabs/Spawner"));
             Spawner spawner = ob.GetComponent<Spawner>();
 
             Vector3 position = new Vector3(0, SPAWNER_HEIGHT, 0);

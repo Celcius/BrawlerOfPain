@@ -68,7 +68,7 @@ public class GridElement : MonoBehaviour {
 
     static GridElement createHoleGridElement(int x, int y, float tileScale)
     {
-        GameObject go = Instantiate(Resources.Load("HoleTile")) as GameObject;
+        GameObject go = Instantiate(Resources.Load("Prefabs/HoleTile")) as GameObject;
         GridElement element = go.GetComponent<GridElement>();
         if(element != null)
         {

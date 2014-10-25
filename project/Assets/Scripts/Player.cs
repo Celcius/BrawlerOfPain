@@ -176,6 +176,10 @@ public class Player : MonoBehaviour {
             _spawner.respawn();
             lastHit = null;
         }
+        else if(!GameManager.instance.canRespawn(_playerNum))
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public void setSpawner(Spawner spawner)

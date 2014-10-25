@@ -54,5 +54,24 @@ public class ScoreController : GameController {
          else return 0;
      }
 
+        public override int[] getLeaderboard()
+        {
+            int maxScore = 0;
+            int[] board = new int[_playerScores.Length];
+            for(int i = 0; i < board.Length;i++)
+            {
+                for(int j = i; j < board.Length; j++)
+                {
+                    int score = _playerScores[j];
+                    if(score > maxScore)
+                    {
+                        maxScore = score;
+                        board[i] = j;
+                    }
+                }
+                maxScore = 0;
+            }
+            return board;
+        }
 
 }

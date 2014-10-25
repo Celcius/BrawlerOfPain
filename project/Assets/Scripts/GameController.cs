@@ -19,7 +19,13 @@ public abstract class GameController : MonoBehaviour {
         }
     }
 
-
+    protected void Update()
+    {
+        if(_state == GameState.GAME_OVER)
+        {
+            GameManager.instance.gameOver();
+        }
+    }
 
     public virtual void registerPlayerDeath(int num, Player player)
     {
@@ -36,6 +42,7 @@ public abstract class GameController : MonoBehaviour {
         else return 0;
     }
 
+    public abstract int[] getLeaderboard();
     
 
 }

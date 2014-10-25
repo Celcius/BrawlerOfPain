@@ -28,7 +28,8 @@ public class PlayerCounter : MonoBehaviour {
             this.gameObject.SetActive(false);
         int counter = 0;
         GameController controller = GameManager.instance.controller;
-        counter = controller.getControllerCounter(_playerNum);
+        if(controller != null)
+          counter = controller.getControllerCounter(_playerNum);
 
         if(GameManager.instance.gameType != GameManager.GameType.LIVES)
         {

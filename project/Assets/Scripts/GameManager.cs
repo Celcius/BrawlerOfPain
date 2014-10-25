@@ -37,12 +37,17 @@ public class GameManager {
     public void startGame()
      {
          gameType = mapInfo.gameType;
+
+
          if (mapInfo.timerHud != null)
              mapInfo.timerHud.SetActive(gameType == GameType.TIMER);
          if (mapInfo.livesHud != null)
              mapInfo.livesHud.SetActive(gameType == GameType.LIVES);
          if (mapInfo.scoreHud != null)
              mapInfo.scoreHud.SetActive(gameType == GameType.SCORE);
+
+
+         mapInfo.gameOverPanel.gameObject.SetActive(false);
 
 
          if (controller != null)
@@ -136,6 +141,18 @@ public class GameManager {
             return lc.canRespawn(playerNum);
         }
         return true;
+    }
+
+    public int[] getLeaderboard()
+    {
+        return controller.getLeaderboard();
+    }
+
+    public void gameOver()
+    {
+        mapInfo.gameOverPanel.gameObject.SetActive(true);
+        mapInfo.gameOverPanel.showGameOver();
+
     }
 }
 

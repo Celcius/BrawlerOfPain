@@ -52,6 +52,9 @@ public class MapGeneration : MonoBehaviour {
     [SerializeField]
     public GameManager.GameType gameType;
 
+    [SerializeField]
+    public GameOverPanel gameOverPanel;
+    
     string[,] map;
                    
 	// Use this for initialization

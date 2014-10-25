@@ -55,8 +55,9 @@ public class GameController : MonoBehaviour {
         Debug.Log("Player " + num + " died " +_playerDeaths[num] + " times");
     }
 
-    public int[] playerDeaths()
+    public int playerDeath(int playerNum)
     {
-        return _playerDeaths;
+        return _playerDeaths[playerNum];
     }
+
 }

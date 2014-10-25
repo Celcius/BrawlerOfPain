@@ -76,15 +76,9 @@ public class PlayerController : MonoBehaviour
 
         #region GAMEPADS
 
-        if (controller == ControllerMapping.CONTROLLERS.GAMEPAD_1) { gamepadNum = 0; }
-        else if (controller == ControllerMapping.CONTROLLERS.GAMEPAD_2) { gamepadNum = -1; }
-        else
-        {
-            gamepadNum = -1;
-
-        }
+		gamepadNum = (int)controller;
         
-        if (gamepadNum >= 0)
+        if (gamepadNum >= (int)ControllerMapping.CONTROLLERS.GAMEPAD_1 && gamepadNum <= (int)ControllerMapping.CONTROLLERS.GAMEPAD_4)
         {
             inputDevice = (InputManager.Devices.Count > gamepadNum) ? InputManager.Devices[gamepadNum] : null;
             if (inputDevice != null)

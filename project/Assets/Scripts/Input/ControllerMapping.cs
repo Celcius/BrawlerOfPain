@@ -6,10 +6,12 @@ public class ControllerMapping {
 
     public enum CONTROLLERS
     {
-        GAMEPAD_1,
-        GAMEPAD_2,
-        KEYBOARD_1,
-        KEYBOARD_2,
+        GAMEPAD_1=0,
+        GAMEPAD_2=1,
+		GAMEPAD_3=2,
+		GAMEPAD_4=3,
+        KEYBOARD_1=5,
+        KEYBOARD_2=6,
     }
 
     public static Dictionary<CONTROLLERS, BaseKeyboard> Keyboards;

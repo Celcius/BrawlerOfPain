@@ -1,14 +1,33 @@
-project/Assembly-CSharp-firstpass-vs.csproj
-project/Assembly-CSharp-firstpass.csproj
-project/Assembly-CSharp-vs.csproj
-project/Assembly-CSharp.csproj
-project/Assembly-UnityScript-firstpass-vs.unityproj
-project/Assembly-UnityScript-firstpass.unityproj
-project/Assembly-UnityScript-vs.unityproj
-project/Assembly-UnityScript.unityproj
-project/UpgradeLog.htm
-project/project-csharp.sln
-project/project.sln
+# =============== #
+# Unity generated #
+# =============== #
+Temp/
+Obj/
+UnityGenerated/
+Library/
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
+
+# ============ #
+# OS generated #
+# ============ #
 .DS_Store
-project/Assets/ShaderForge/
-project/Assets/ShaderForge.meta
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db

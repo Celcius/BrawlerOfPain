@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player : MonoBehaviour {
+public delegate void SpawnDelegate (Player player);
 
+public class Player : MonoBehaviour {
+	
     private const int MIN_Y = -10;
 
 	public float speed = 10f;
@@ -21,6 +23,9 @@ public class Player : MonoBehaviour {
 
 	public bool autoRotate = true;
 	public float maxRotationSpeed = 360;
+	
+	public SpawnDelegate OnSpawnEvent;
+	
 	// Use this for initialization
 	void Start () {
 		_inputController = GetComponent<PlayerController>();
@@ -166,7 +171,6 @@ public class Player : MonoBehaviour {
 	
 	private void handleMovementAnimation(int dirX, int dirY)
 	{
-		Debug.Log ("Direction " + dirX + " " + dirY);
 		if (dirX == 0 && dirY == 0){
 			animator.SetBool ("Stop", true);
 		} else {
@@ -199,6 +203,7 @@ public class Player : MonoBehaviour {
         {
             _spawner.respawn();
             lastHit = null;
+			OnSpawnEvent(this);
         }
         else if(!GameManager.instance.canRespawn(_playerNum))
         {

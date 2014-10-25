@@ -197,7 +197,6 @@ public class PlayerController : MonoBehaviour
 
     void processKeyboard()
     {
-		Debug.Log ("processing keyboard");
         _state[ACTIONS.JUMP] |= Input.GetKey(ControllerMapping.Keyboards[controller].JUMP);
         _state[ACTIONS.UP] |= Input.GetKey(ControllerMapping.Keyboards[controller].UP);
         _state[ACTIONS.LEFT] |= Input.GetKey(ControllerMapping.Keyboards[controller].LEFT);
@@ -208,12 +207,10 @@ public class PlayerController : MonoBehaviour
 		float dY = 0f;
 		if (LEFT) {
 			dX -= 1.0f;
-			Debug.Log ("LEFT");
 		}
 		if (RIGHT)
 		{
 			dX += 1.0f;
-			Debug.Log ("RIGHT");
 		}
 		if (UP)
 		    dY += 1.0f;
@@ -222,6 +219,5 @@ public class PlayerController : MonoBehaviour
 
 		Direction.Set (dX, dY);
 		Direction.Normalize();
-		Debug.Log ("Keyboard dir: " + Direction);
     }
 }

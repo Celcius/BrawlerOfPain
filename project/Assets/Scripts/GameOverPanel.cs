@@ -10,26 +10,37 @@ public class GameOverPanel : MonoBehaviour {
     [SerializeField]
     Text _pressAnyText;
 
-    float timer = 0;
-    float neededTime = 3;
+    bool showing = false;
+    float elapsedTime = 0.0f;
+    float neededTime = 5*60;
+
     void Update ()
     {
-        timer += Time.deltaTime;
-        if(timer > neededTime)
-        {
-            _pressAnyText.gameObject.SetActive(true);
+        if(showing)
+        { 
+          elapsedTime = elapsedTime + Time.deltaTime * 1000;
+        
+           if (elapsedTime > neededTime)
+           {
+             _pressAnyText.gameObject.SetActive(true);
             
-             if (InputManager.ActiveDevice.AnyButton.IsPressed || Input.anyKey)
-             {
-                GameManager.instance.startGame();
+                 if (InputManager.ActiveDevice.AnyButton.IsPressed || Input.anyKey)
+              {
+                   showing = false;
+                   Application.LoadLevel(0);
+                    //GameManager.instance.startGame();
            
-             }
+              }
+            }
         }
     }
 
 
     public void showGameOver()
     {
+        if (showing)
+            return;
+        showing = true;
         int[] winners = GameManager.instance.getLeaderboard();
 
         for(int i = 0; i < 4;i++)
@@ -40,8 +51,8 @@ public class GameOverPanel : MonoBehaviour {
             else
                 _texts[i].gameObject.SetActive(false);
         }
-        timer = 0;
-        _pressAnyText.gameObject.SetActive(false);
+        elapsedTime = 0;
+       _pressAnyText.gameObject.SetActive(false);
 
     }
 }

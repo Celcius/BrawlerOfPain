@@ -188,6 +188,7 @@ public class PlayerController : MonoBehaviour
         _state[ACTIONS.DOWN] |= inputDevice.Direction.Down;
         _state[ACTIONS.UP] |= inputDevice.Direction.Up;
 		_state [ACTIONS.ACTION_1] |= inputDevice.Action1.IsPressed;
+		
 		Direction.Set (inputDevice.Direction.X, inputDevice.Direction.Y);
     }
 

@@ -12,6 +12,8 @@ public class Player : MonoBehaviour {
 	
 	public BoxCollider attackCollider;
     private Spawner _spawner;
+    
+    public Animator animator;
 
     private int _playerNum;
 
@@ -21,23 +23,17 @@ public class Player : MonoBehaviour {
 	void Start () {
 		_inputController = GetComponent<PlayerController>();
 		motor = GetComponent<CharacterMotor> ();
+		animator = GetComponentInChildren<Animator>();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		handleMovement ();
 
 		if (transform.position.y < MIN_Y)
 			respawn();
-
-		handleAttack ();
 	}
 
-	private void handleAttack()
-	{
-		if (attackCollider == null) return;
-
-	}
 
 	void OnTriggerEnter(Collider other)
 	{
@@ -95,9 +91,22 @@ public class Player : MonoBehaviour {
 		currentPosition.x += speed * Time.deltaTime * _inputController.inputDevice.Direction.X;
 		currentPosition.z += speed * Time.deltaTime * _inputController.inputDevice.Direction.Y;
 		transform.position = currentPosition;*/
-
+		
 		var directionVector = new Vector3(_inputController.Direction.x, _inputController.Direction.y, 0);
-
+		if (Mathf.Abs(directionVector.x) > 0.5f  ) { 
+			directionVector.x = Mathf.Sign(directionVector.x) * 1;
+		} else {
+			directionVector.x = 0;
+		}
+		if (Mathf.Abs (directionVector.y) > 0.5f ) { 
+			directionVector.y = Mathf.Sign(directionVector.y) * 1;
+		} else {
+			directionVector.y = 0;
+		}
+		
+		int dirX = (int)directionVector.x;
+		int dirY = (int)directionVector.y;
+		
 //		Debug.Log ("directionVector: " + directionVector);
 		if (directionVector != Vector3.zero) {
 			// Get the length of the directon vector and then normalize it
@@ -129,6 +138,7 @@ public class Player : MonoBehaviour {
 		
 		// Set rotation to the move direction	
 		if (autoRotate && directionVector.sqrMagnitude > 0.01) {
+			//Vector3 newForward =  directionVector; 
 			Vector3 newForward =  ConstantSlerp(
 				transform.forward,
 				directionVector,
@@ -137,6 +147,8 @@ public class Player : MonoBehaviour {
 			newForward = ProjectOntoPlane(newForward, transform.up);
 			transform.rotation = Quaternion.LookRotation(newForward, transform.up);
 		}
+		
+		if (animator != null) handleMovementAnimation(dirX, dirY);
 	}
 
 	Vector3 ProjectOntoPlane (Vector3 v, Vector3 normal) {
@@ -147,6 +159,19 @@ public class Player : MonoBehaviour {
 	{
 		float value = Mathf.Min(1, angle / Vector3.Angle(from, to));
 		return Vector3.Slerp(from, to, value);
+	}
+	
+	private void handleMovementAnimation(int dirX, int dirY)
+	{
+		Debug.Log ("Direction " + dirX + " " + dirY);
+		if (dirX == 0 && dirY == 0){
+			animator.SetBool ("Stop", true);
+		} else {
+			animator.SetBool ("Stop", false);
+		}
+		Debug.Log ("Current state" + animator.GetCurrentAnimatorStateInfo(0).nameHash);
+		animator.SetInteger("dirX", dirX);
+		animator.SetInteger("dirY", dirY);
 	}
 
     public void setNum(int num)

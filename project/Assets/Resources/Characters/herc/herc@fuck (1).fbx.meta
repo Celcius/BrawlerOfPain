@@ -1,0 +1,325 @@
+fileFormatVersion: 2
+guid: 3263b86aeba984196b0a4c9b2de21aa0
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: back
+    100002: Chest
+    100004: COG
+    100006: GC
+    100008: Head
+    100010: Head_End
+    100012: //RootNode
+    100014: joint2
+    100016: joint2 1
+    100018: joint3
+    100020: joint3 1
+    100022: joint4
+    100024: joint4 1
+    100026: joint5
+    100028: joint5 1
+    100030: LeftArm
+    100032: LeftFoot
+    100034: LeftForeArm
+    100036: LeftHand
+    100038: LeftHandIndex1
+    100040: LeftHandIndex2
+    100042: LeftHandIndex3
+    100044: LeftHandPinky1
+    100046: LeftHandPinky2
+    100048: LeftHandPinky3
+    100050: LeftHandRing1
+    100052: LeftHandRing2
+    100054: LeftHandRing3
+    100056: LeftHandThumb1
+    100058: LeftHandThumb2
+    100060: LeftHandThumb3
+    100062: LeftLeg
+    100064: LeftShoulder
+    100066: LeftToes
+    100068: LeftUpLeg
+    100070: mesh1
+    100072: Neck
+    100074: RightArm
+    100076: RightFoot
+    100078: RightForeArm
+    100080: RightHand
+    100082: RightHandIndex1
+    100084: RightHandIndex2
+    100086: RightHandIndex3
+    100088: RightHandPinky1
+    100090: RightHandPinky2
+    100092: RightHandPinky3
+    100094: RightHandRing1
+    100096: RightHandRing2
+    100098: RightHandRing3
+    100100: RightHandThumb1
+    100102: RightHandThumb2
+    100104: RightHandThumb3
+    100106: RightLeg
+    100108: RightShoulder
+    100110: RightToes
+    100112: RightUpLeg
+    100114: Spine
+    400000: back
+    400002: Chest
+    400004: COG
+    400006: GC
+    400008: Head
+    400010: Head_End
+    400012: //RootNode
+    400014: joint2
+    400016: joint2 1
+    400018: joint3
+    400020: joint3 1
+    400022: joint4
+    400024: joint4 1
+    400026: joint5
+    400028: joint5 1
+    400030: LeftArm
+    400032: LeftFoot
+    400034: LeftForeArm
+    400036: LeftHand
+    400038: LeftHandIndex1
+    400040: LeftHandIndex2
+    400042: LeftHandIndex3
+    400044: LeftHandPinky1
+    400046: LeftHandPinky2
+    400048: LeftHandPinky3
+    400050: LeftHandRing1
+    400052: LeftHandRing2
+    400054: LeftHandRing3
+    400056: LeftHandThumb1
+    400058: LeftHandThumb2
+    400060: LeftHandThumb3
+    400062: LeftLeg
+    400064: LeftShoulder
+    400066: LeftToes
+    400068: LeftUpLeg
+    400070: mesh1
+    400072: Neck
+    400074: RightArm
+    400076: RightFoot
+    400078: RightForeArm
+    400080: RightHand
+    400082: RightHandIndex1
+    400084: RightHandIndex2
+    400086: RightHandIndex3
+    400088: RightHandPinky1
+    400090: RightHandPinky2
+    400092: RightHandPinky3
+    400094: RightHandRing1
+    400096: RightHandRing2
+    400098: RightHandRing3
+    400100: RightHandThumb1
+    400102: RightHandThumb2
+    400104: RightHandThumb3
+    400106: RightLeg
+    400108: RightShoulder
+    400110: RightToes
+    400112: RightUpLeg
+    400114: Spine
+    4300000: mesh1
+    7400000: fuck (1)
+    9500000: //RootNode
+    13700000: mesh1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: fuck (1)
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 16
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: back
+        weight: 1
+      - path: GC
+        weight: 1
+      - path: GC/COG
+        weight: 1
+      - path: GC/COG/LeftUpLeg
+        weight: 1
+      - path: GC/COG/LeftUpLeg/LeftLeg
+        weight: 1
+      - path: GC/COG/LeftUpLeg/LeftLeg/LeftFoot
+        weight: 1
+      - path: GC/COG/LeftUpLeg/LeftLeg/LeftFoot/LeftToes
+        weight: 1
+      - path: GC/COG/RightUpLeg
+        weight: 1
+      - path: GC/COG/RightUpLeg/RightLeg
+        weight: 1
+      - path: GC/COG/RightUpLeg/RightLeg/RightFoot
+        weight: 1
+      - path: GC/COG/RightUpLeg/RightLeg/RightFoot/RightToes
+        weight: 1
+      - path: GC/COG/Spine
+        weight: 1
+      - path: GC/COG/Spine/Chest
+        weight: 1
+      - path: GC/COG/Spine/Chest/LeftShoulder
+        weight: 1
+      - path: GC/COG/Spine/Chest/LeftShoulder/LeftArm
+        weight: 1
+      - path: GC/COG/Spine/Chest/LeftShoulder/LeftArm/LeftForeArm
+        weight: 1
+      - path: GC/COG/Spine/Chest/LeftShoulder/LeftArm/LeftForeArm/LeftHand
+        weight: 1
+      - path: GC/COG/Spine/Chest/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandIndex1
+        weight: 1
+      - path: GC/COG/Spine/Chest/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandIndex1/LeftHandIndex2
+        weight: 1
+      - path: GC/COG/Spine/Chest/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandIndex1/LeftHandIndex2/LeftHandIndex3
+        weight: 1
+      - path: GC/COG/Spine/Chest/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandIndex1/LeftHandIndex2/LeftHandIndex3/joint2
+        weight: 1
+      - path: GC/COG/Spine/Chest/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandPinky1
+        weight: 1
+      - path: GC/COG/Spine/Chest/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandPinky1/LeftHandPinky2
+        weight: 1
+      - path: GC/COG/Spine/Chest/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandPinky1/LeftHandPinky2/LeftHandPinky3
+        weight: 1
+      - path: GC/COG/Spine/Chest/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandPinky1/LeftHandPinky2/LeftHandPinky3/joint4
+        weight: 1
+      - path: GC/COG/Spine/Chest/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandRing1
+        weight: 1
+      - path: GC/COG/Spine/Chest/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandRing1/LeftHandRing2
+        weight: 1
+      - path: GC/COG/Spine/Chest/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandRing1/LeftHandRing2/LeftHandRing3
+        weight: 1
+      - path: GC/COG/Spine/Chest/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandRing1/LeftHandRing2/LeftHandRing3/joint3
+        weight: 1
+      - path: GC/COG/Spine/Chest/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandThumb1
+        weight: 1
+      - path: GC/COG/Spine/Chest/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandThumb1/LeftHandThumb2
+        weight: 1
+      - path: GC/COG/Spine/Chest/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandThumb1/LeftHandThumb2/LeftHandThumb3
+        weight: 1
+      - path: GC/COG/Spine/Chest/LeftShoulder/LeftArm/LeftForeArm/LeftHand/LeftHandThumb1/LeftHandThumb2/LeftHandThumb3/joint5
+        weight: 1
+      - path: GC/COG/Spine/Chest/Neck
+        weight: 1
+      - path: GC/COG/Spine/Chest/Neck/Head
+        weight: 1
+      - path: GC/COG/Spine/Chest/Neck/Head/Head_End
+        weight: 1
+      - path: GC/COG/Spine/Chest/RightShoulder
+        weight: 1
+      - path: GC/COG/Spine/Chest/RightShoulder/RightArm
+        weight: 1
+      - path: GC/COG/Spine/Chest/RightShoulder/RightArm/RightForeArm
+        weight: 1
+      - path: GC/COG/Spine/Chest/RightShoulder/RightArm/RightForeArm/RightHand
+        weight: 1
+      - path: GC/COG/Spine/Chest/RightShoulder/RightArm/RightForeArm/RightHand/RightHandIndex1
+        weight: 1
+      - path: GC/COG/Spine/Chest/RightShoulder/RightArm/RightForeArm/RightHand/RightHandIndex1/RightHandIndex2
+        weight: 1
+      - path: GC/COG/Spine/Chest/RightShoulder/RightArm/RightForeArm/RightHand/RightHandIndex1/RightHandIndex2/RightHandIndex3
+        weight: 1
+      - path: GC/COG/Spine/Chest/RightShoulder/RightArm/RightForeArm/RightHand/RightHandIndex1/RightHandIndex2/RightHandIndex3/joint2
+          1
+        weight: 1
+      - path: GC/COG/Spine/Chest/RightShoulder/RightArm/RightForeArm/RightHand/RightHandPinky1
+        weight: 1
+      - path: GC/COG/Spine/Chest/RightShoulder/RightArm/RightForeArm/RightHand/RightHandPinky1/RightHandPinky2
+        weight: 1
+      - path: GC/COG/Spine/Chest/RightShoulder/RightArm/RightForeArm/RightHand/RightHandPinky1/RightHandPinky2/RightHandPinky3
+        weight: 1
+      - path: GC/COG/Spine/Chest/RightShoulder/RightArm/RightForeArm/RightHand/RightHandPinky1/RightHandPinky2/RightHandPinky3/joint4
+          1
+        weight: 1
+      - path: GC/COG/Spine/Chest/RightShoulder/RightArm/RightForeArm/RightHand/RightHandRing1
+        weight: 1
+      - path: GC/COG/Spine/Chest/RightShoulder/RightArm/RightForeArm/RightHand/RightHandRing1/RightHandRing2
+        weight: 1
+      - path: GC/COG/Spine/Chest/RightShoulder/RightArm/RightForeArm/RightHand/RightHandRing1/RightHandRing2/RightHandRing3
+        weight: 1
+      - path: GC/COG/Spine/Chest/RightShoulder/RightArm/RightForeArm/RightHand/RightHandRing1/RightHandRing2/RightHandRing3/joint3
+          1
+        weight: 1
+      - path: GC/COG/Spine/Chest/RightShoulder/RightArm/RightForeArm/RightHand/RightHandThumb1
+        weight: 1
+      - path: GC/COG/Spine/Chest/RightShoulder/RightArm/RightForeArm/RightHand/RightHandThumb1/RightHandThumb2
+        weight: 1
+      - path: GC/COG/Spine/Chest/RightShoulder/RightArm/RightForeArm/RightHand/RightHandThumb1/RightHandThumb2/RightHandThumb3
+        weight: 1
+      - path: GC/COG/Spine/Chest/RightShoulder/RightArm/RightForeArm/RightHand/RightHandThumb1/RightHandThumb2/RightHandThumb3/joint5
+          1
+        weight: 1
+      - path: mesh1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

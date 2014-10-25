@@ -172,7 +172,6 @@ public class Player : MonoBehaviour {
 		} else {
 			animator.SetBool ("Stop", false);
 		}
-		Debug.Log ("Current state" + animator.GetCurrentAnimatorStateInfo(0).nameHash);
 		animator.SetInteger("dirX", dirX);
 		animator.SetInteger("dirY", dirY);
 	}

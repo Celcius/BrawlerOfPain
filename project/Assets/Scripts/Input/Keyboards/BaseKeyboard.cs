@@ -14,12 +14,12 @@ public class BaseKeyboard {
     {
         BaseKeyboard kb = new BaseKeyboard();
 
-        kb.JUMP = KeyCode.Space;
+        kb.JUMP = KeyCode.RightShift;
 		kb.UP = KeyCode.UpArrow;
         kb.LEFT = KeyCode.LeftArrow;
         kb.RIGHT = KeyCode.RightArrow;
         kb.DOWN = KeyCode.DownArrow;
-		kb.ACTION_1 = KeyCode.X;
+		kb.ACTION_1 = KeyCode.RightControl;
 
         return kb;
     }
@@ -27,10 +27,12 @@ public class BaseKeyboard {
     public static BaseKeyboard createDefaultKeyboard2()
     {
         BaseKeyboard kb = new BaseKeyboard();
-        kb.JUMP = KeyCode.W;
+        kb.JUMP = KeyCode.Z;
+		kb.UP = KeyCode.W;
         kb.LEFT = KeyCode.A;
         kb.RIGHT = KeyCode.D;
         kb.DOWN = KeyCode.S;
+		kb.ACTION_1 = KeyCode.X;
         return kb;
     }
 }

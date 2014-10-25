@@ -20,6 +20,8 @@ public class MapGeneration : MonoBehaviour {
     [SerializeField]
     private int PLAYER_START_OFFSET = 2;
 
+    [SerializeField]
+    private int BLOOD_SPRAY = 2;
 
     [SerializeField]
     private int SPAWNER_HEIGHT = 2;
@@ -27,11 +29,12 @@ public class MapGeneration : MonoBehaviour {
     [SerializeField]
     private float _tileScale = 1.0f;
 
-    string[,] map; 
+    string[,] map;
                    
 	// Use this for initialization
 	void Start () {
         map = new string[MAP_WIDTH, MAP_HEIGHT];
+        MapService.instance.setMap( new GridElement[MAP_WIDTH, MAP_HEIGHT],this);
         initializeGrid();
         setupGrid();
         setupDeathColider();
@@ -57,13 +60,16 @@ public class MapGeneration : MonoBehaviour {
                     map[x, y] = GridElement.FLOOR_CODE;
             }
     }
+
     void setupGrid()
     {
         for(int x = 0; x < MAP_WIDTH; x++)
             for(int y = 0; y < MAP_HEIGHT; y++)
             {
                 string gridCode = map[x, y];
-                GridElement.createGridElement(gridCode, x, y, _tileScale);
+                GridElement element = GridElement.createGridElement(gridCode, x, y, _tileScale);
+                if (element != null)
+                    MapService.instance.setMapElement(element,x,y);
             }
     }
 
@@ -75,6 +81,17 @@ public class MapGeneration : MonoBehaviour {
         deathZone.transform.position = new Vector3((MAP_WIDTH) * _tileScale / 2, -4, (MAP_HEIGHT) * _tileScale / 2);
 
     }
+
+    public float getMapScale()
+    {
+        return _tileScale;
+    }
+
+    public int getBloodSpray()
+    {
+        return BLOOD_SPRAY;
+    }
+
 
     void setupSpawners()
     {

@@ -40,7 +40,7 @@ public class Player : MonoBehaviour {
 
 		var directionVector = new Vector3(_inputController.Direction.x, _inputController.Direction.y, 0);
 
-		Debug.Log ("directionVector: " + directionVector);
+//		Debug.Log ("directionVector: " + directionVector);
 		if (directionVector != Vector3.zero) {
 			// Get the length of the directon vector and then normalize it
 			// Dividing by the length is cheaper than normalizing when we already have the length anyway
@@ -117,6 +117,7 @@ public class Player : MonoBehaviour {
     #region Death Functions
     public void respawn()
     {
+        MapService.instance.bloodElementsAtWorldPosition(transform.position.x, transform.position.z);
         if(_spawner != null)
         {
             _spawner.respawn();

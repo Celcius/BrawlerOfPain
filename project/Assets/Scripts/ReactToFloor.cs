@@ -18,6 +18,8 @@ public class ReactToFloor : MonoBehaviour {
 	{
 		GridElement cell = GameManager.instance.getCellAtWorldPosition(transform.position.x, transform.position.z);
 		//Debug.Log ("current cell bloody:" + cell._isBloodied);
+        if (cell == null)
+            return;
 		if (cell._isBloodied){
 			motor.movement.maxGroundAcceleration = 10;
 		} else {

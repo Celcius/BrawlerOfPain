@@ -52,11 +52,21 @@ public class TimerController : GameController {
         int maxScore = 0;
         int[] board = new int[GameManager.instance.mapInfo.PLAYER_COUNT];
         for (int i = 0; i < board.Length; i++)
+            board[i] = -1;
+
+        for (int i = 0; i < board.Length; i++)
         {
-            for (int j = i; j < board.Length; j++)
+            for (int j = 0; j < board.Length; j++)
             {
+                bool skip = false;
+                for (int k = 0; k < board.Length; k++)
+                    if (board[k] == j)
+                        skip = true;
+
+                if (skip)
+                    continue;
                 int score = getControllerCounter(j);
-                if (score > maxScore)
+                if (score >= maxScore)
                 {
                     maxScore = score;
                     board[i] = j;
@@ -64,6 +74,10 @@ public class TimerController : GameController {
             }
             maxScore = 0;
         }
-        return board;
+
+        int[] board2 = new int[board.Length];
+        for (int i = board.Length - 1; i > 0; i--)
+            board2[i] = board[board.Length - 1 - i];
+            return board2;
     }
 }

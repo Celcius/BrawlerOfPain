@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
+    private const int MIN_Y = -10;
+
 	public float speed = 10f;
 	private PlayerController _inputController;
 	private CharacterMotor motor;
@@ -23,6 +25,8 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		handleMovement ();
+        if (transform.position.y < MIN_Y)
+            respawn();
 	}
 
 	private void handleMovement()
@@ -36,6 +40,7 @@ public class Player : MonoBehaviour {
 
 		var directionVector = new Vector3(_inputController.Direction.x, _inputController.Direction.y, 0);
 
+		Debug.Log ("directionVector: " + directionVector);
 		if (directionVector != Vector3.zero) {
 			// Get the length of the directon vector and then normalize it
 			// Dividing by the length is cheaper than normalizing when we already have the length anyway

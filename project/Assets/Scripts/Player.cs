@@ -68,37 +68,16 @@ public class Player : MonoBehaviour {
 
 		if (elm != null) {
 			Debug.Log (" sending impact");
-			elm.AddImpact(new Vector3( transform.forward.x, 0, transform.forward.z ), 150);
+			elm.AddImpact(new Vector3( transform.forward.x, 0, transform.forward.z ), 125);
             
 		}
 		Debug.Log ("Colliding "+gameObject.name+" with "  + other.gameObject.name);
         otherPlayer.lastHit = this;
-		/*
-		//if (attackCollider == other) return;
-		if (gameObject == other.gameObject) return;
-		
-		
-
-		
-		ImpactReceiver elm = other.gameObject.GetComponent<ImpactReceiver>() as ImpactReceiver;
-		
-		if (elm != null) {
-			Debug.Log (" sending impact");
-			elm.AddImpact(new Vector3(_inputController.Direction.x, 0, _inputController.Direction.y), 100);
-		}
-		Debug.Log ("Colliding "+gameObject.name+" with "  + other.gameObject.name);
-		*/
 	}
 
 
 	private void handleMovement()
 	{
-		//if (_inputController.inputDevice == null) return;
-
-		/*currentPosition = transform.position;
-		currentPosition.x += speed * Time.deltaTime * _inputController.inputDevice.Direction.X;
-		currentPosition.z += speed * Time.deltaTime * _inputController.inputDevice.Direction.Y;
-		transform.position = currentPosition;*/
 		
 		var directionVector = new Vector3(_inputController.Direction.x, _inputController.Direction.y, 0);
 		if (Mathf.Abs(directionVector.x) > 0.5f  ) { 

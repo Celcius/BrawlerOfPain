@@ -18,6 +18,8 @@ public class PlayerCounter : MonoBehaviour {
         _currentCount = 0;
         _label = gameObject.GetComponentInChildren<Text>();
         _label.text = "" + _currentCount;
+        if (GameManager.instance.gameType == GameManager.GameType.LIVES)
+            _label.fontSize = _maxTierIncrement;
     }
 
     void Update()
@@ -28,15 +30,39 @@ public class PlayerCounter : MonoBehaviour {
         GameController controller = GameManager.instance.controller;
         counter = controller.getControllerCounter(_playerNum);
 
-        if (_currentCount != counter)
+        if(GameManager.instance.gameType != GameManager.GameType.LIVES)
         {
-            int increment = 2;
-            if (counter < _currentCount)
-                increment = -increment/2;
-            _currentCount = counter;
-            _label.text = "" + _currentCount;
-            if (_currentCount < _maxTierIncrement)
-                _label.fontSize += increment;
+          if (_currentCount != counter)
+          {
+               int increment = 2;
+               if (counter < _currentCount)
+                  increment = -increment/2;
+              _currentCount = counter;
+              _label.text = "" + _currentCount;
+              if (_currentCount < _maxTierIncrement)
+                    _label.fontSize += increment;
+            }
+        }
+        else
+        {
+        
+            if (counter == GameManager.instance.mapInfo.LIVES)
+            {
+                    _currentCount = counter;
+                    _label.fontSize = 30;
+                    _label.text = "" + _currentCount;
+
+            }
+            if (_currentCount != counter && counter < _currentCount )
+            {
+       
+                    _currentCount = counter;
+                    _label.fontSize -= 3;
+                    _label.text = "" + _currentCount;
+             }
+        
+
+           
         }
     }
 }

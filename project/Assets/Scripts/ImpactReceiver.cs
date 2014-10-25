@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public delegate void ImpactDelegate ();
+
 public class ImpactReceiver : MonoBehaviour {
 
 	float mass = 3.0F; // defines the character mass
@@ -8,7 +10,9 @@ public class ImpactReceiver : MonoBehaviour {
 	private CharacterController character;
 	private Player player;
 	private SpriteRenderer renderer;
-
+	
+	public ImpactDelegate OnImpact;
+	
 	private bool invincible = false;
 	
 	// Use this for initialization
@@ -34,6 +38,8 @@ public class ImpactReceiver : MonoBehaviour {
 		dir.Normalize();
 		if (dir.y < 0) dir.y = -dir.y; // reflect down force on the ground
 		impact += dir.normalized * force / mass;
+		
+		OnImpact();
 	}
 	
 	IEnumerator SpawnTimer(float waitSeconds) {

@@ -16,6 +16,8 @@ public class ReactToFloor : MonoBehaviour {
 	
 	private void SetFloorPhysics()
 	{
+		if (GameManager.instance.mapInfo == null) return; 
+		
 		GridElement cell = GameManager.instance.getCellAtWorldPosition(transform.position.x, transform.position.z);
 		//Debug.Log ("current cell bloody:" + cell._isBloodied);
 		if (cell._isBloodied){

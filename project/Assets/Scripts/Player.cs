@@ -2,6 +2,7 @@
 using System.Collections;
 
 public delegate void SpawnDelegate (Player player);
+public delegate void CollisionDelegate (Collider colision);
 
 public class Player : MonoBehaviour {
 	
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour {
 	public float maxRotationSpeed = 360;
 	
 	public SpawnDelegate OnSpawnEvent;
+	public CollisionDelegate OnCollision;
 	
 	// Use this for initialization
 	void Start () {
@@ -56,10 +58,12 @@ public class Player : MonoBehaviour {
 
 	void handleCollision(Collider other)
 	{
+		OnCollision(other);
+		
 		Player otherPlayer = other.GetComponent<Player> ();
 		if (otherPlayer == this || otherPlayer == null)
 			return;
-
+		
 		if (!_inputController.justPressed (PlayerController.ACTIONS.ACTION_1)) {
 			return;
 		}

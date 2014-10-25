@@ -41,7 +41,7 @@ public class LivesController : GameController {
             {
                 board[placeIndex] = playerNum;
 
-                if (placeIndex == 0)
+                if (placeIndex == 1)
                 { 
                     _state = GameState.GAME_OVER;
                     for (int i = 0; i < board.Length; i++ )
@@ -52,8 +52,9 @@ public class LivesController : GameController {
                         }
                         
                     }
+                    placeIndex--;
                 }
-                placeIndex--;
+
                 return false;
             }
         }

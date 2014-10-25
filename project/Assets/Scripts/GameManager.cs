@@ -85,6 +85,10 @@ public class GameManager {
      {
          int xPos = (int)(x / mapInfo.getMapScale());
          int yPos = (int)(y / mapInfo.getMapScale());
+        
+         if (xPos < 0 || yPos < 0)
+             return null;
+
          if (xPos < _elementMap.GetLength(0) && yPos < _elementMap.GetLength(1))
              return _elementMap[xPos, yPos];
          return null;

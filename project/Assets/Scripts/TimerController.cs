@@ -31,14 +31,16 @@ public class TimerController : GameController {
         _state = GameState.PLAYING;
     }
 
-    public string getMinTimer()
+    
+    public int getMinTimer()
     {
         int timer = (int)_gameTimer / (216000);
-        return timer < 10 ? "0" + timer : "" + timer;
+        return timer;
     }
-    public string getSecTimer()
+    public int getSecTimer()
     {
         int timer =  ((int)_gameTimer/  3600)%60;
-        return timer < 10 ? "0" + timer :""+ timer;
+        return timer;
+      
     }
 }

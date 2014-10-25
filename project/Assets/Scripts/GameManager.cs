@@ -13,14 +13,18 @@ public class GameManager {
      public MapGeneration mapInfo;
      public GameController controller = null;
 
+     public Player vipHolder;
+     PickableItem vipToken;
+
     public ControllerMapping.CONTROLLERS[] _controllerMapping = 
         {
+        ControllerMapping.CONTROLLERS.KEYBOARD_2,
+		ControllerMapping.CONTROLLERS.KEYBOARD_1,
         ControllerMapping.CONTROLLERS.GAMEPAD_1,
-        ControllerMapping.CONTROLLERS.GAMEPAD_2,
-		ControllerMapping.CONTROLLERS.KEYBOARD_2,
-		ControllerMapping.CONTROLLERS.KEYBOARD_1};
+        ControllerMapping.CONTROLLERS.GAMEPAD_2
+        };
    
-    public enum GameType {TIMER, SCORE, LIVES};
+    public enum GameType {TIMER, SCORE, LIVES, VIP};
     public GameType gameType;
 
      public static GameManager instance
@@ -32,8 +36,9 @@ public class GameManager {
               }
 
               return _instance;
+         }
      }
-     }
+
 
     public void startGame()
      {
@@ -45,8 +50,8 @@ public class GameManager {
          if (mapInfo.livesHud != null)
              mapInfo.livesHud.SetActive(gameType == GameType.LIVES);
          if (mapInfo.scoreHud != null)
-             mapInfo.scoreHud.SetActive(gameType == GameType.SCORE);
-
+             mapInfo.scoreHud.SetActive(gameType == GameType.SCORE||
+                 gameType == GameType.VIP);
 
          mapInfo.gameOverPanel.gameObject.SetActive(false);
 
@@ -68,6 +73,10 @@ public class GameManager {
             case GameType.TIMER:
                  TimerController timeController = ob.AddComponent<TimerController>();
                  controller = timeController as GameController; 
+                 break;
+            case GameType.VIP:
+                 VipController vipController = ob.AddComponent<VipController>();
+                 controller = vipController as VipController;
                  break;
         }
 
@@ -131,6 +140,7 @@ public class GameManager {
 
     public void registerPlayerDeath(int playerNum, Player player)
     {
+        
         controller.registerPlayerDeath(playerNum, player);
     }
     
@@ -167,6 +177,32 @@ public class GameManager {
         mapInfo.gameOverPanel.gameObject.SetActive(true);
         mapInfo.gameOverPanel.showGameOver();
 
+    }
+
+    public void spawnVIPToken()
+    {
+
+        if (vipToken != null)
+        {
+            if(vipHolder!= null)
+            { 
+             PickItems pick = vipHolder.GetComponent<PickItems>();
+              pick.LoseItem();
+              vipHolder = null;
+            }
+        }
+        else
+        {
+            vipToken = mapInfo.createVipToken();
+        }
+        mapInfo.centerItem(vipToken.transform);
+            
+        
+    }
+
+    public void setVipHolder(Player player)
+    {
+        vipHolder = player;
     }
 }
 

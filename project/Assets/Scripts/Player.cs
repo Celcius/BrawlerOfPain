@@ -180,6 +180,11 @@ public class Player : MonoBehaviour {
     #region Death Functions
     public void respawn()
     {
+
+
+        if(GetComponent<PickItems>().hasItem())
+            GameManager.instance.spawnVIPToken();
+
         GameManager.instance.bloodElementsAtWorldPosition(transform.position.x, transform.position.z);
         GameManager.instance.registerPlayerDeath(_playerNum,this);
         if(_spawner != null && GameManager.instance.canRespawn(_playerNum))

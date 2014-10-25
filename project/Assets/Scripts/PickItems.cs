@@ -14,6 +14,11 @@ public class PickItems : MonoBehaviour {
 		player.OnCollision += HandleCollision;
 		impactReceiver.OnImpact += HandleImpact;
 	}
+
+    public bool hasItem()
+    {
+        return currentItem != null;
+    }
 	
 	private void HandleCollision(Collider other)
 	{
@@ -23,15 +28,20 @@ public class PickItems : MonoBehaviour {
 			currentItem = item;
 			item.collider.enabled = false;
 			item.rigidbody.isKinematic = true;
+            GameManager.instance.vipHolder = this.GetComponent<Player>();
 		}
 	}
-	
-	
+
+
 	private void HandleImpact()
 	{
-		currentItem.collider.enabled = true;
-		currentItem.rigidbody.isKinematic = false;
-		currentItem = null;
+        if(currentItem != null)
+        { 
+	    	currentItem.collider.enabled = true;
+		    currentItem.rigidbody.isKinematic = false;
+	    	currentItem = null;
+            GameManager.instance.vipHolder = null;
+        }
 	}
 	
 	// Update is called once per frame
@@ -39,5 +49,12 @@ public class PickItems : MonoBehaviour {
 		if (currentItem){
 			currentItem.transform.position = player.transform.position + new Vector3(0,3,0);
 		}
+
 	}
+
+    
+    public void LoseItem()
+    {
+        HandleImpact();
+    }
 }

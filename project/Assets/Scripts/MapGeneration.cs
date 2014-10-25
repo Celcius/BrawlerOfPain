@@ -4,7 +4,18 @@ using UnityEngine;
 using System.Collections;
 
 public class MapGeneration : MonoBehaviour {
-    
+ 
+
+    [SerializeField]
+    public GameObject timerHud;
+
+    [SerializeField]
+    public GameObject scoreHud;
+
+    [SerializeField]
+    public GameObject livesHud;
+
+
     [SerializeField]
     private int MAP_WIDTH = 20;
     [SerializeField]
@@ -30,7 +41,16 @@ public class MapGeneration : MonoBehaviour {
     private float _tileScale = 1.0f;
 
     [SerializeField]
-    private float GAME_TIME = 2.5f;
+    public float GAME_TIME = 2.5f;
+
+    [SerializeField]
+    public int MAX_SCORE = 20;
+
+    [SerializeField]
+    public int LIVES = 5;
+
+    [SerializeField]
+    public GameManager.GameType gameType;
 
     string[,] map;
                    
@@ -42,7 +62,7 @@ public class MapGeneration : MonoBehaviour {
         setupGrid();
         setupDeathColider();
         setupSpawners();
-        GameManager.instance.startGameOfDuration(GAME_TIME * 60); // will start Counting
+        GameManager.instance.startGame(); // will start Counting
    	}
 	
 	// Update is called once per frame
@@ -105,13 +125,13 @@ public class MapGeneration : MonoBehaviour {
             Spawner spawner = ob.GetComponent<Spawner>();
 
             Vector3 position = new Vector3(0, SPAWNER_HEIGHT, 0);
-            if( i == 0)
+            if( i == 2)
                 position = new Vector3(HOLE_MARGIN + PLAYER_START_OFFSET, SPAWNER_HEIGHT, HOLE_MARGIN + PLAYER_START_OFFSET);
-            else if(i ==1)
-                position = new Vector3(MAP_WIDTH - HOLE_MARGIN - PLAYER_START_OFFSET, SPAWNER_HEIGHT, HOLE_MARGIN + PLAYER_START_OFFSET);
-            else if( i == 2)
-                position = new Vector3(HOLE_MARGIN + PLAYER_START_OFFSET, SPAWNER_HEIGHT, MAP_HEIGHT - HOLE_MARGIN - PLAYER_START_OFFSET);
             else if(i ==3)
+                position = new Vector3(MAP_WIDTH - HOLE_MARGIN - PLAYER_START_OFFSET, SPAWNER_HEIGHT, HOLE_MARGIN + PLAYER_START_OFFSET);
+            else if( i == 0)
+                position = new Vector3(HOLE_MARGIN + PLAYER_START_OFFSET, SPAWNER_HEIGHT, MAP_HEIGHT - HOLE_MARGIN - PLAYER_START_OFFSET);
+            else if(i ==1)
                 position = new Vector3(MAP_WIDTH - HOLE_MARGIN - PLAYER_START_OFFSET, SPAWNER_HEIGHT, MAP_HEIGHT - HOLE_MARGIN - PLAYER_START_OFFSET);
            
             spawner.transform.position = position;

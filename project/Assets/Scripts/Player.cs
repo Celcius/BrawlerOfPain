@@ -17,6 +17,8 @@ public class Player : MonoBehaviour {
 
     private int _playerNum;
 
+    public Player lastHit = null;
+
 	public bool autoRotate = true;
 	public float maxRotationSpeed = 360;
 	// Use this for initialization
@@ -62,9 +64,10 @@ public class Player : MonoBehaviour {
 		if (elm != null) {
 			Debug.Log (" sending impact");
 			elm.AddImpact(new Vector3( transform.forward.x, 0, transform.forward.z ), 150);
+            
 		}
 		Debug.Log ("Colliding "+gameObject.name+" with "  + other.gameObject.name);
-
+        otherPlayer.lastHit = this;
 		/*
 		//if (attackCollider == other) return;
 		if (gameObject == other.gameObject) return;
@@ -178,33 +181,29 @@ public class Player : MonoBehaviour {
     {
         _playerNum = num;
         PlayerController controller = GetComponent<PlayerController>();
-        switch(num)
-        {
-            case 0:
-                controller.controller = ControllerMapping.CONTROLLERS.KEYBOARD_1;
-                break;
-            case 1:
-                controller.controller = ControllerMapping.CONTROLLERS.KEYBOARD_2;
-                break;
-            case 2:
-                controller.controller = ControllerMapping.CONTROLLERS.GAMEPAD_1;
-                break;
-            case 3:
-                controller.controller = ControllerMapping.CONTROLLERS.GAMEPAD_2;
-                break;
-
-        }
+     
+        controller.controller = GameManager.instance.getMappingForPlayer(_playerNum);
     
+    }
+
+    public int getNum()
+    {
+        return _playerNum;
     }
 
     #region Death Functions
     public void respawn()
     {
         GameManager.instance.bloodElementsAtWorldPosition(transform.position.x, transform.position.z);
-        GameManager.instance.registerPlayerDeath(_playerNum);
-        if(_spawner != null)
+        GameManager.instance.registerPlayerDeath(_playerNum,this);
+        if(_spawner != null && GameManager.instance.canRespawn(_playerNum))
         {
             _spawner.respawn();
+            lastHit = null;
+        }
+        else if(!GameManager.instance.canRespawn(_playerNum))
+        {
+            gameObject.SetActive(false);
         }
     }
 

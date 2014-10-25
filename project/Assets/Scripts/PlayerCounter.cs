@@ -5,27 +5,38 @@ public class PlayerCounter : MonoBehaviour {
 
     [SerializeField]
     int _playerNum = 0;
-    int _deathCount = 0;
+    int _currentCount = 0;
 
     int _maxTierIncrement = 20;
 
     Text _label;
     void Start()
     {
-        _deathCount = 0;
+
+
+
+        _currentCount = 0;
         _label = gameObject.GetComponentInChildren<Text>();
-        _label.text = ""+_deathCount;
+        _label.text = "" + _currentCount;
     }
 
     void Update()
     {
-        int deaths = GameManager.instance.controller.playerDeath(_playerNum);
-        if (_deathCount != deaths)
+        if (GameManager.instance.mapInfo.PLAYER_COUNT <= _playerNum)
+            this.gameObject.SetActive(false);
+        int counter = 0;
+        GameController controller = GameManager.instance.controller;
+        counter = controller.getControllerCounter(_playerNum);
+
+        if (_currentCount != counter)
         {
-            _deathCount = deaths;
-            _label.text = "" + _deathCount;
-            if (_deathCount < _maxTierIncrement)
-                _label.fontSize += 2;
+            int increment = 2;
+            if (counter < _currentCount)
+                increment = -increment/2;
+            _currentCount = counter;
+            _label.text = "" + _currentCount;
+            if (_currentCount < _maxTierIncrement)
+                _label.fontSize += increment;
         }
     }
 }

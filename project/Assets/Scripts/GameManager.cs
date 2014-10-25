@@ -1,35 +1,51 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MapService {
+public class GameManager {
 
 
 
-     protected MapService() { }
+    protected GameManager() { }
 
-     private static MapService _instance = null;
+    private static GameManager _instance = null;
 
      public GridElement[,] _elementMap;
-     public MapGeneration _mapInfo;
+     public MapGeneration mapInfo;
 
-     public static MapService instance
+     public GameController controller = null;
+
+     public static GameManager instance
      {
          get {
-             return _instance == null ? _instance = new MapService() : _instance;
+              if(_instance == null) 
+              {
+                  _instance = new GameManager();
+              }
+
+              return _instance;
      }
+     }
+
+    public void startGameOfDuration(float time)
+     {
+         GameObject ob = new GameObject();
+         controller = ob.AddComponent<GameController>();
+         controller.setTimer(time);
+       
      }
 
      public void setMap(GridElement[,] map, MapGeneration mapInfo)
     {
         this._elementMap = map;
-        this._mapInfo = mapInfo;
+        this.mapInfo = mapInfo;
     }
+
 
     public void bloodElementsAtWorldPosition(float x, float y)
     {
-        int xPos = (int)(x / _mapInfo.getMapScale());
-        int yPos = (int)(y / _mapInfo.getMapScale());
-        int spray = _mapInfo.getBloodSpray();
+        int xPos = (int)(x / mapInfo.getMapScale());
+        int yPos = (int)(y / mapInfo.getMapScale());
+        int spray = mapInfo.getBloodSpray();
 
         int bloodStartX = Mathf.Max(0, xPos - spray);
         int bloodStartY = Mathf.Max(0, yPos - spray);
@@ -56,4 +72,11 @@ public class MapService {
             _elementMap[x, y] = element;
         }
     }
+
+
+    public void registerPlayerDeath(int playerNum)
+    {
+        controller.registerPlayerDeath(playerNum);
+    }
+    
 }

@@ -175,7 +175,8 @@ public class Player : MonoBehaviour {
     #region Death Functions
     public void respawn()
     {
-        MapService.instance.bloodElementsAtWorldPosition(transform.position.x, transform.position.z);
+        GameManager.instance.bloodElementsAtWorldPosition(transform.position.x, transform.position.z);
+        GameManager.instance.registerPlayerDeath(_playerNum);
         if(_spawner != null)
         {
             _spawner.respawn();

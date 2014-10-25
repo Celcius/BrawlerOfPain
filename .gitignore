@@ -10,3 +10,5 @@ project/UpgradeLog.htm
 project/project-csharp.sln
 project/project.sln
 .DS_Store
+project/Assets/ShaderForge/
+project/Assets/ShaderForge.meta

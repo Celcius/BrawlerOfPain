@@ -29,7 +29,7 @@ public class ScoreController : GameController {
                 int toScore = player.lastHit.getNum();
                 if(toScore < _playerScores.Length)
                 {
-                    _playerScores[toScore]++;
+                    _playerScores[toScore]+=2;
                     if(_playerScores[toScore] >= _maxPlayerScore)
                     {
                         _state = GameState.GAME_OVER;
@@ -39,7 +39,7 @@ public class ScoreController : GameController {
             else
             {
                 int toSubtractScore = player.getNum();
-                _playerScores[toSubtractScore] = Mathf.Max(0, _playerScores[toSubtractScore] + 1);
+                _playerScores[toSubtractScore] = Mathf.Max(0, _playerScores[toSubtractScore] - 1);
                 
             }
    

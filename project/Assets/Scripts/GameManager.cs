@@ -20,7 +20,7 @@ public class GameManager {
         ControllerMapping.CONTROLLERS.GAMEPAD_2};
    
     public enum GameType {TIMER, SCORE, LIVES};
-    public GameType gameType = GameType.SCORE;
+    public GameType gameType = GameType.TIMER;
 
      public static GameManager instance
      {

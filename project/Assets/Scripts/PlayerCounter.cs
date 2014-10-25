@@ -37,10 +37,13 @@ public class PlayerCounter : MonoBehaviour {
 
         if (_currentCount != counter)
         {
+            int increment = 2;
+            if (counter < _currentCount)
+                increment = -increment/2;
             _currentCount = counter;
             _label.text = "" + _currentCount;
             if (_currentCount < _maxTierIncrement)
-                _label.fontSize += 2;
+                _label.fontSize += increment;
         }
     }
 }

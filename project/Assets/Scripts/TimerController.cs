@@ -13,7 +13,7 @@ public class TimerController : GameController {
             case GameState.UNINITIALIZED:
                 break;
             case GameState.PLAYING:
-                _gameTimer -= Time.deltaTime;
+                _gameTimer -= Time.deltaTime*3600;
                 if (_gameTimer <= 0)
                 {
                     _gameTimer = 0;
@@ -26,10 +26,19 @@ public class TimerController : GameController {
 
     public void setTimer(float time)
     {
-        _gameTimer = time;
-        GameObject ob = new GameObject();
-        ob.AddComponent<GameController>();
+        _gameTimer = time*3600;
+
         _state = GameState.PLAYING;
     }
 
+    public string getMinTimer()
+    {
+        int timer = (int)_gameTimer / (216000);
+        return timer < 10 ? "0" + timer : "" + timer;
+    }
+    public string getSecTimer()
+    {
+        int timer =  ((int)_gameTimer/  3600)%60;
+        return timer < 10 ? "0" + timer :""+ timer;
+    }
 }

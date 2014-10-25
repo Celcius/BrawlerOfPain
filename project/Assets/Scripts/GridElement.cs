@@ -57,6 +57,7 @@ public class GridElement : MonoBehaviour {
         GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Cube);
         plane.AddComponent<GridElement>().setGridElement(x, y, tileScale);
         plane.tag = "MapBlock";
+        //plane.renderer.material = (Material)Resources.Load("Materials/Floor") as Material;
         return plane.GetComponent<GridElement>();
     }
 

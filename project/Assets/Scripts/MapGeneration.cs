@@ -15,7 +15,7 @@ public class MapGeneration : MonoBehaviour {
     private int DEATH_MARGIN = 2;
 
     [SerializeField]
-    private int PLAYER_COUNT = 4;
+    public int PLAYER_COUNT = 4;
 
     [SerializeField]
     private int PLAYER_START_OFFSET = 2;
@@ -29,17 +29,21 @@ public class MapGeneration : MonoBehaviour {
     [SerializeField]
     private float _tileScale = 1.0f;
 
+    [SerializeField]
+    private float GAME_TIME = 2.5f;
+
     string[,] map;
                    
 	// Use this for initialization
 	void Start () {
         map = new string[MAP_WIDTH, MAP_HEIGHT];
-        MapService.instance.setMap( new GridElement[MAP_WIDTH, MAP_HEIGHT],this);
+        GameManager.instance.setMap(new GridElement[MAP_WIDTH, MAP_HEIGHT], this);
         initializeGrid();
         setupGrid();
         setupDeathColider();
         setupSpawners();
-	}
+        GameManager.instance.startGameOfDuration(GAME_TIME * 60); // will start Counting
+   	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -69,7 +73,7 @@ public class MapGeneration : MonoBehaviour {
                 string gridCode = map[x, y];
                 GridElement element = GridElement.createGridElement(gridCode, x, y, _tileScale);
                 if (element != null)
-                    MapService.instance.setMapElement(element,x,y);
+                    GameManager.instance.setMapElement(element, x, y);
             }
     }
 

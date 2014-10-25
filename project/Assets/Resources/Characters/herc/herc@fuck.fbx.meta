@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: c2b4679659ecf48e898979331803a7fc
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Chest
+    100002: COG
+    100004: GC
+    100006: Head
+    100008: Head_End
+    100010: //RootNode
+    100012: joint2
+    100014: joint2 1
+    100016: joint3
+    100018: joint3 1
+    100020: joint4
+    100022: joint4 1
+    100024: joint5
+    100026: joint5 1
+    100028: LeftArm
+    100030: LeftFoot
+    100032: LeftForeArm
+    100034: LeftHand
+    100036: LeftHandIndex1
+    100038: LeftHandIndex2
+    100040: LeftHandIndex3
+    100042: LeftHandPinky1
+    100044: LeftHandPinky2
+    100046: LeftHandPinky3
+    100048: LeftHandRing1
+    100050: LeftHandRing2
+    100052: LeftHandRing3
+    100054: LeftHandThumb1
+    100056: LeftHandThumb2
+    100058: LeftHandThumb3
+    100060: LeftLeg
+    100062: LeftShoulder
+    100064: LeftToes
+    100066: LeftUpLeg
+    100068: Neck
+    100070: RightArm
+    100072: RightFoot
+    100074: RightForeArm
+    100076: RightHand
+    100078: RightHandIndex1
+    100080: RightHandIndex2
+    100082: RightHandIndex3
+    100084: RightHandPinky1
+    100086: RightHandPinky2
+    100088: RightHandPinky3
+    100090: RightHandRing1
+    100092: RightHandRing2
+    100094: RightHandRing3
+    100096: RightHandThumb1
+    100098: RightHandThumb2
+    100100: RightHandThumb3
+    100102: RightLeg
+    100104: RightShoulder
+    100106: RightToes
+    100108: RightUpLeg
+    100110: Spine
+    400000: Chest
+    400002: COG
+    400004: GC
+    400006: Head
+    400008: Head_End
+    400010: //RootNode
+    400012: joint2
+    400014: joint2 1
+    400016: joint3
+    400018: joint3 1
+    400020: joint4
+    400022: joint4 1
+    400024: joint5
+    400026: joint5 1
+    400028: LeftArm
+    400030: LeftFoot
+    400032: LeftForeArm
+    400034: LeftHand
+    400036: LeftHandIndex1
+    400038: LeftHandIndex2
+    400040: LeftHandIndex3
+    400042: LeftHandPinky1
+    400044: LeftHandPinky2
+    400046: LeftHandPinky3
+    400048: LeftHandRing1
+    400050: LeftHandRing2
+    400052: LeftHandRing3
+    400054: LeftHandThumb1
+    400056: LeftHandThumb2
+    400058: LeftHandThumb3
+    400060: LeftLeg
+    400062: LeftShoulder
+    400064: LeftToes
+    400066: LeftUpLeg
+    400068: Neck
+    400070: RightArm
+    400072: RightFoot
+    400074: RightForeArm
+    400076: RightHand
+    400078: RightHandIndex1
+    400080: RightHandIndex2
+    400082: RightHandIndex3
+    400084: RightHandPinky1
+    400086: RightHandPinky2
+    400088: RightHandPinky3
+    400090: RightHandRing1
+    400092: RightHandRing2
+    400094: RightHandRing3
+    400096: RightHandThumb1
+    400098: RightHandThumb2
+    400100: RightHandThumb3
+    400102: RightLeg
+    400104: RightShoulder
+    400106: RightToes
+    400108: RightUpLeg
+    400110: Spine
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

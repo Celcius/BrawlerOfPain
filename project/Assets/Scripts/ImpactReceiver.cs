@@ -6,6 +6,9 @@ public class ImpactReceiver : MonoBehaviour {
 	float mass = 3.0F; // defines the character mass
 	Vector3 impact = Vector3.zero;
 	private CharacterController character;
+
+	private bool invencible = false;
+	
 	// Use this for initialization
 	void Start () {
 		character = GetComponent<CharacterController>();
@@ -24,4 +27,6 @@ public class ImpactReceiver : MonoBehaviour {
 		if (dir.y < 0) dir.y = -dir.y; // reflect down force on the ground
 		impact += dir.normalized * force / mass;
 	}
+
+	
 }

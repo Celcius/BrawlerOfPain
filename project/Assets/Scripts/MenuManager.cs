@@ -8,8 +8,10 @@ public class MenuManager : MonoBehaviour {
 
     void Start()
     {
-        OptionsScreen.SetActive(false);
+        DontDestroyOnLoad(gameObject);
+        MainScreen.SetActive(false);
         EndScreen.SetActive(false);
     }
 	
+
 }

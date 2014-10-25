@@ -57,7 +57,11 @@ public class GameController : MonoBehaviour {
 
     public int playerDeath(int playerNum)
     {
-        return _playerDeaths[playerNum];
+        if (playerNum < _playerDeaths.Length)
+            return _playerDeaths[playerNum];
+        else return 0;
     }
+
+    
 
 }

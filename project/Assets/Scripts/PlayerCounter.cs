@@ -12,6 +12,9 @@ public class PlayerCounter : MonoBehaviour {
     Text _label;
     void Start()
     {
+        
+         
+
         _deathCount = 0;
         _label = gameObject.GetComponentInChildren<Text>();
         _label.text = ""+_deathCount;
@@ -19,6 +22,8 @@ public class PlayerCounter : MonoBehaviour {
 
     void Update()
     {
+        if (GameManager.instance.mapInfo.PLAYER_COUNT <= _playerNum)
+            this.gameObject.SetActive(false);
         int deaths = GameManager.instance.controller.playerDeath(_playerNum);
         if (_deathCount != deaths)
         {

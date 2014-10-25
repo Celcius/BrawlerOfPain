@@ -153,22 +153,8 @@ public class Player : MonoBehaviour {
     {
         _playerNum = num;
         PlayerController controller = GetComponent<PlayerController>();
-        switch(num)
-        {
-            case 0:
-                controller.controller = ControllerMapping.CONTROLLERS.KEYBOARD_1;
-                break;
-            case 1:
-                controller.controller = ControllerMapping.CONTROLLERS.KEYBOARD_2;
-                break;
-            case 2:
-                controller.controller = ControllerMapping.CONTROLLERS.GAMEPAD_1;
-                break;
-            case 3:
-                controller.controller = ControllerMapping.CONTROLLERS.GAMEPAD_2;
-                break;
-
-        }
+     
+        controller.controller = GameManager.instance.getMappingForPlayer(_playerNum);
     
     }
 

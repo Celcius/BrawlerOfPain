@@ -105,13 +105,13 @@ public class MapGeneration : MonoBehaviour {
             Spawner spawner = ob.GetComponent<Spawner>();
 
             Vector3 position = new Vector3(0, SPAWNER_HEIGHT, 0);
-            if( i == 0)
+            if( i == 2)
                 position = new Vector3(HOLE_MARGIN + PLAYER_START_OFFSET, SPAWNER_HEIGHT, HOLE_MARGIN + PLAYER_START_OFFSET);
-            else if(i ==1)
-                position = new Vector3(MAP_WIDTH - HOLE_MARGIN - PLAYER_START_OFFSET, SPAWNER_HEIGHT, HOLE_MARGIN + PLAYER_START_OFFSET);
-            else if( i == 2)
-                position = new Vector3(HOLE_MARGIN + PLAYER_START_OFFSET, SPAWNER_HEIGHT, MAP_HEIGHT - HOLE_MARGIN - PLAYER_START_OFFSET);
             else if(i ==3)
+                position = new Vector3(MAP_WIDTH - HOLE_MARGIN - PLAYER_START_OFFSET, SPAWNER_HEIGHT, HOLE_MARGIN + PLAYER_START_OFFSET);
+            else if( i == 0)
+                position = new Vector3(HOLE_MARGIN + PLAYER_START_OFFSET, SPAWNER_HEIGHT, MAP_HEIGHT - HOLE_MARGIN - PLAYER_START_OFFSET);
+            else if(i ==1)
                 position = new Vector3(MAP_WIDTH - HOLE_MARGIN - PLAYER_START_OFFSET, SPAWNER_HEIGHT, MAP_HEIGHT - HOLE_MARGIN - PLAYER_START_OFFSET);
            
             spawner.transform.position = position;

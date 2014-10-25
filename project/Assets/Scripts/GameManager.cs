@@ -14,6 +14,12 @@ public class GameManager {
 
      public GameController controller = null;
 
+    public ControllerMapping.CONTROLLERS[] _controllerMapping = 
+        {ControllerMapping.CONTROLLERS.KEYBOARD_2,
+        ControllerMapping.CONTROLLERS.KEYBOARD_1,
+        ControllerMapping.CONTROLLERS.GAMEPAD_1,
+        ControllerMapping.CONTROLLERS.GAMEPAD_2};
+
      public static GameManager instance
      {
          get {
@@ -28,6 +34,8 @@ public class GameManager {
 
     public void startGameOfDuration(float time)
      {
+         if (controller != null)
+             Object.Destroy(controller.gameObject);
          GameObject ob = new GameObject();
          controller = ob.AddComponent<GameController>();
          controller.setTimer(time);
@@ -60,8 +68,8 @@ public class GameManager {
                 if(deltaX + deltaY <= spray)
                 {
                     GridElement element = _elementMap[xVar, yVar];
-                    if(element!= null)
-                       element.fillBlood();
+                    if (element != null)
+                        element.fillBlood(0.1f+(((spray + 1.0f) - (deltaX + deltaY)) / (float)spray)*0.9f);
                 }
             }
     }
@@ -79,4 +87,18 @@ public class GameManager {
         controller.registerPlayerDeath(playerNum);
     }
     
+    public void setPlayerMapping(ControllerMapping.CONTROLLERS mapping, int playerNum)
+    {
+        if(playerNum < _controllerMapping.Length)
+          _controllerMapping[playerNum] = mapping;
+    }
+
+    public  ControllerMapping.CONTROLLERS getMappingForPlayer(int playerNum)
+    {
+        if(playerNum < _controllerMapping.Length)
+           return _controllerMapping[playerNum];
+        return ControllerMapping.CONTROLLERS.KEYBOARD_1;
+    }
 }
+
+

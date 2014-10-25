@@ -8,6 +8,7 @@ public class GridElement : MonoBehaviour {
     public const string HOLE_CODE = "o";
 
     public bool _isBloodied = false;
+    private float _bloodiedIntensity = 0;
 
     protected const float unityScale = 10.0f;
 
@@ -45,11 +46,15 @@ public class GridElement : MonoBehaviour {
         return null;
     }
 
-    public void fillBlood()
+    public void fillBlood(float intensity)
     {
         _isBloodied = true;
-        transform.renderer.material = (Material)Resources.Load("Materials/blue_color") as Material;
-
+        if (_bloodiedIntensity < intensity)
+        {
+            _bloodiedIntensity = intensity;
+            renderer.material.SetFloat("_bloodBlend", _bloodiedIntensity);
+        }
+            
     }
 
     static GridElement createPlaneFloorGridElement(int x, int y, float tileScale)
@@ -57,7 +62,7 @@ public class GridElement : MonoBehaviour {
         GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Cube);
         plane.AddComponent<GridElement>().setGridElement(x, y, tileScale);
         plane.tag = "MapBlock";
-        //plane.renderer.material = (Material)Resources.Load("Materials/Floor") as Material;
+        plane.renderer.material = (Material)Resources.Load("Materials/Floor") as Material;
         return plane.GetComponent<GridElement>();
     }
 

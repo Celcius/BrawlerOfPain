@@ -13,7 +13,7 @@ public class ImpactReceiver : MonoBehaviour {
 	
 	public ImpactDelegate OnImpact;
 	
-	private bool invincible = false;
+	public bool invincible = false;
 	
 	// Use this for initialization
 	void Start () {

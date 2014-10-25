@@ -8,6 +8,7 @@ public class BaseKeyboard {
     public KeyCode LEFT = KeyCode.None;
     public KeyCode RIGHT = KeyCode.None;
     public KeyCode DOWN = KeyCode.None;
+	public KeyCode ACTION_1 = KeyCode.None;
 
     public static BaseKeyboard createDefaultKeyboard1()
     {
@@ -18,6 +19,8 @@ public class BaseKeyboard {
         kb.LEFT = KeyCode.LeftArrow;
         kb.RIGHT = KeyCode.RightArrow;
         kb.DOWN = KeyCode.DownArrow;
+		kb.ACTION_1 = KeyCode.X;
+
         return kb;
     }
 

@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour
         RIGHT,
         UP,
         DOWN,
-        JUMP
+        JUMP,
+		ACTION_1
     }
 
     public ControllerMapping.CONTROLLERS controller = ControllerMapping.CONTROLLERS.KEYBOARD_1;
@@ -187,11 +188,12 @@ public class PlayerController : MonoBehaviour
 
     void processGamepad(InputDevice inputDevice)
     {
-        _state[ACTIONS.JUMP] |= inputDevice.Action1.IsPressed;
+        _state[ACTIONS.JUMP] |= inputDevice.Action2.IsPressed;
         _state[ACTIONS.LEFT] |= inputDevice.Direction.Left;
         _state[ACTIONS.RIGHT] |= inputDevice.Direction.Right;
         _state[ACTIONS.DOWN] |= inputDevice.Direction.Down;
         _state[ACTIONS.UP] |= inputDevice.Direction.Up;
+		_state [ACTIONS.ACTION_1] |= inputDevice.Action1.IsPressed;
 		Direction.Set (inputDevice.Direction.X, inputDevice.Direction.Y);
     }
 
@@ -202,6 +204,7 @@ public class PlayerController : MonoBehaviour
         _state[ACTIONS.LEFT] |= Input.GetKey(ControllerMapping.Keyboards[controller].LEFT);
         _state[ACTIONS.RIGHT] |= Input.GetKey(ControllerMapping.Keyboards[controller].RIGHT);
         _state[ACTIONS.DOWN] |= Input.GetKey(ControllerMapping.Keyboards[controller].DOWN);
+		_state [ACTIONS.ACTION_1] |= Input.GetKey (ControllerMapping.Keyboards [controller].ACTION_1);
 
 		float dX = 0f;
 		float dY = 0f;

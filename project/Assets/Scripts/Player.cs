@@ -8,6 +8,8 @@ public class Player : MonoBehaviour {
 	private CharacterMotor motor;
 	private Vector3 currentPosition;
 
+	public BoxCollider attackCollider;
+
 	public bool autoRotate = true;
 	public float maxRotationSpeed = 360;
 	// Use this for initialization
@@ -19,7 +21,60 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		handleMovement ();
+		handleAttack ();
 	}
+
+	private void handleAttack()
+	{
+		if (attackCollider == null) return;
+
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		handleCollision (other);
+	}
+
+	void OnTriggerStay(Collider other)
+	{
+		handleCollision (other);
+	}
+
+	void handleCollision(Collider other)
+	{
+		Player otherPlayer = other.GetComponent<Player> ();
+		if (otherPlayer == this || otherPlayer == null)
+			return;
+
+		if (!_inputController.justPressed (PlayerController.ACTIONS.ACTION_1)) {
+			return;
+		}
+
+		ImpactReceiver elm = other.GetComponent<ImpactReceiver>();
+
+		if (elm != null) {
+			Debug.Log (" sending impact");
+			elm.AddImpact(new Vector3( transform.forward.x, 0, transform.forward.z ), 150);
+		}
+		Debug.Log ("Colliding "+gameObject.name+" with "  + other.gameObject.name);
+
+		/*
+		//if (attackCollider == other) return;
+		if (gameObject == other.gameObject) return;
+		
+		
+
+		
+		ImpactReceiver elm = other.gameObject.GetComponent<ImpactReceiver>() as ImpactReceiver;
+		
+		if (elm != null) {
+			Debug.Log (" sending impact");
+			elm.AddImpact(new Vector3(_inputController.Direction.x, 0, _inputController.Direction.y), 100);
+		}
+		Debug.Log ("Colliding "+gameObject.name+" with "  + other.gameObject.name);
+		*/
+	}
+
 
 	private void handleMovement()
 	{

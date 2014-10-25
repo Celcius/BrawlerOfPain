@@ -8,6 +8,10 @@ public class Player : MonoBehaviour {
 	private CharacterMotor motor;
 	private Vector3 currentPosition;
 
+    private Spawner _spawner;
+
+    private int _playerNum;
+
 	public bool autoRotate = true;
 	public float maxRotationSpeed = 360;
 	// Use this for initialization
@@ -82,4 +86,42 @@ public class Player : MonoBehaviour {
 		float value = Mathf.Min(1, angle / Vector3.Angle(from, to));
 		return Vector3.Slerp(from, to, value);
 	}
+
+    public void setNum(int num)
+    {
+        _playerNum = num;
+        PlayerController controller = GetComponent<PlayerController>();
+        switch(num)
+        {
+            case 0:
+                controller.controller = ControllerMapping.CONTROLLERS.KEYBOARD_1;
+                break;
+            case 1:
+                controller.controller = ControllerMapping.CONTROLLERS.KEYBOARD_2;
+                break;
+            case 2:
+                controller.controller = ControllerMapping.CONTROLLERS.GAMEPAD_1;
+                break;
+            case 3:
+                controller.controller = ControllerMapping.CONTROLLERS.GAMEPAD_2;
+                break;
+
+        }
+    
+    }
+
+    #region Death Functions
+    public void respawn()
+    {
+        if(_spawner != null)
+        {
+            _spawner.respawn();
+        }
+    }
+
+    public void setSpawner(Spawner spawner)
+    {
+        this._spawner = spawner;
+    }
+    #endregion
 }

@@ -20,7 +20,7 @@ public class GameManager {
         ControllerMapping.CONTROLLERS.GAMEPAD_2};
    
     public enum GameType {TIMER, SCORE, LIVES};
-    public GameType gameType = GameType.TIMER;
+    public GameType gameType;
 
      public static GameManager instance
      {
@@ -34,8 +34,9 @@ public class GameManager {
      }
      }
 
-    public void startGameOfDuration(float time)
+    public void startGame()
      {
+         gameType = mapInfo.gameType;
          if (mapInfo.timerHud != null)
              mapInfo.timerHud.SetActive(gameType == GameType.TIMER);
          if (mapInfo.livesHud != null)
@@ -50,21 +51,21 @@ public class GameManager {
         switch(gameType)
         {
             case GameType.LIVES:
+                LivesController livesController = ob.AddComponent<LivesController>();
+                 controller = livesController as GameController;
                 break;
             case GameType.SCORE:
 
                 ScoreController scoreController = ob.AddComponent<ScoreController>();
-                scoreController.setWithMaxScore(mapInfo.MAX_SCORE);
                 controller = scoreController as ScoreController;
                  break;
             case GameType.TIMER:
                  TimerController timeController = ob.AddComponent<TimerController>();
-                 timeController.setTimer(time);
                  controller = timeController as GameController; 
                  break;
         }
 
-
+        controller.startController();
        
      }
 
@@ -72,6 +73,7 @@ public class GameManager {
     {
         this._elementMap = map;
         this.mapInfo = mapInfo;
+       
     }
 
 
@@ -124,6 +126,16 @@ public class GameManager {
         if(playerNum < _controllerMapping.Length)
            return _controllerMapping[playerNum];
         return ControllerMapping.CONTROLLERS.KEYBOARD_1;
+    }
+
+    public bool canRespawn(int playerNum)
+    {
+        if (gameType == GameType.LIVES)
+        {
+            LivesController lc = controller as LivesController;
+            return lc.canRespawn(playerNum);
+        }
+        return true;
     }
 }
 

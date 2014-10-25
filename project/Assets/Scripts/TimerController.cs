@@ -24,8 +24,9 @@ public class TimerController : GameController {
         }
       }
 
-    public void setTimer(float time)
+    public override void startController()
     {
+        float time = GameManager.instance.mapInfo.GAME_TIME * 60;
         _gameTimer = time*3600;
 
         _state = GameState.PLAYING;
@@ -43,4 +44,5 @@ public class TimerController : GameController {
         return timer;
       
     }
+
 }

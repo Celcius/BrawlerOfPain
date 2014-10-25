@@ -5,10 +5,10 @@ public class ScoreController : GameController {
 
         int[] _playerScores;
         int _maxPlayerScore;
-	    
-    public void setWithMaxScore(int score)
+
+        public override void startController()
         {
-            _maxPlayerScore = score;
+            _maxPlayerScore = GameManager.instance.mapInfo.MAX_SCORE;
 
             int players = GameManager.instance.mapInfo.PLAYER_COUNT;
             _playerScores = new int[players];
@@ -44,11 +44,15 @@ public class ScoreController : GameController {
             }
    
         }
-    public int getPlayerScore(int playerNum)
+
+
+
+        public override int getControllerCounter(int playerNum)
      {
          if (playerNum < _playerScores.Length)
              return _playerScores[playerNum];
          else return 0;
      }
+
 
 }

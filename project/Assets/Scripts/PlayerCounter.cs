@@ -25,15 +25,8 @@ public class PlayerCounter : MonoBehaviour {
         if (GameManager.instance.mapInfo.PLAYER_COUNT <= _playerNum)
             this.gameObject.SetActive(false);
         int counter = 0;
-        if (GameManager.instance.gameType == GameManager.GameType.TIMER)
-        {
-            counter = GameManager.instance.controller.playerDeath(_playerNum);
-        }
-        else if (GameManager.instance.gameType == GameManager.GameType.SCORE)
-        {
-            ScoreController controller = GameManager.instance.controller as ScoreController;
-            counter =  controller.getPlayerScore(_playerNum);
-        }
+        GameController controller = GameManager.instance.controller;
+        counter = controller.getControllerCounter(_playerNum);
 
         if (_currentCount != counter)
         {

@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Input\InputEntry.cs" />
     <Compile Include="Assets\Scripts\Input\Keyboards\BaseKeyboard.cs" />
     <Compile Include="Assets\Scripts\Input\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\LivesController.cs" />
     <Compile Include="Assets\Scripts\MapGeneration.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerCounter.cs" />

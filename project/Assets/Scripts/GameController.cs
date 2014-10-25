@@ -27,7 +27,9 @@ public abstract class GameController : MonoBehaviour {
         Debug.Log("Player " + num + " died " + _playerDeaths[num] + " times");
     }
 
-    public int playerDeath(int playerNum)
+    public abstract void startController();
+
+    public virtual int getControllerCounter(int playerNum)
     {
         if (playerNum < _playerDeaths.Length)
             return _playerDeaths[playerNum];

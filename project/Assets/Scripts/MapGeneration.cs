@@ -41,10 +41,16 @@ public class MapGeneration : MonoBehaviour {
     private float _tileScale = 1.0f;
 
     [SerializeField]
-    private float GAME_TIME = 2.5f;
+    public float GAME_TIME = 2.5f;
 
     [SerializeField]
     public int MAX_SCORE = 20;
+
+    [SerializeField]
+    public int LIVES = 5;
+
+    [SerializeField]
+    public GameManager.GameType gameType;
 
     string[,] map;
                    
@@ -56,7 +62,7 @@ public class MapGeneration : MonoBehaviour {
         setupGrid();
         setupDeathColider();
         setupSpawners();
-        GameManager.instance.startGameOfDuration(GAME_TIME * 60); // will start Counting
+        GameManager.instance.startGame(); // will start Counting
    	}
 	
 	// Update is called once per frame

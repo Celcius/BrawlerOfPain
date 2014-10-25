@@ -4,9 +4,12 @@ using System.Collections;
 public class ReactToFloor : MonoBehaviour {
 	
 	private CharacterMotor motor;
+	private Shadow shadow;
+	
 	// Use this for initialization
 	void Start () {
 		motor = GetComponent<CharacterMotor>();
+		shadow = GetComponentInChildren<Shadow>();
 	}
 	
 	// Update is called once per frame
@@ -20,8 +23,11 @@ public class ReactToFloor : MonoBehaviour {
 		
 		GridElement cell = GameManager.instance.getCellAtWorldPosition(transform.position.x, transform.position.z);
 		//Debug.Log ("current cell bloody:" + cell._isBloodied);
-        if (cell == null)
+        if (cell == null){
+			shadow.gameObject.SetActive(false);
             return;
+        }
+		shadow.gameObject.SetActive(true);
 		if (cell._isBloodied){
 			motor.movement.maxGroundAcceleration = 10;
 		} else {

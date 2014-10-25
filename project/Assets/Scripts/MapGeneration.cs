@@ -4,7 +4,18 @@ using UnityEngine;
 using System.Collections;
 
 public class MapGeneration : MonoBehaviour {
-    
+ 
+
+    [SerializeField]
+    public GameObject timerHud;
+
+    [SerializeField]
+    public GameObject scoreHud;
+
+    [SerializeField]
+    public GameObject livesHud;
+
+
     [SerializeField]
     private int MAP_WIDTH = 20;
     [SerializeField]
@@ -31,6 +42,9 @@ public class MapGeneration : MonoBehaviour {
 
     [SerializeField]
     private float GAME_TIME = 2.5f;
+
+    [SerializeField]
+    public int MAX_SCORE = 20;
 
     string[,] map;
                    

@@ -15,6 +15,8 @@ public class Player : MonoBehaviour {
 
     private int _playerNum;
 
+    public Player lastHit = null;
+
 	public bool autoRotate = true;
 	public float maxRotationSpeed = 360;
 	// Use this for initialization
@@ -66,9 +68,10 @@ public class Player : MonoBehaviour {
 		if (elm != null) {
 			Debug.Log (" sending impact");
 			elm.AddImpact(new Vector3( transform.forward.x, 0, transform.forward.z ), 150);
+            
 		}
 		Debug.Log ("Colliding "+gameObject.name+" with "  + other.gameObject.name);
-
+        otherPlayer.lastHit = this;
 		/*
 		//if (attackCollider == other) return;
 		if (gameObject == other.gameObject) return;
@@ -158,14 +161,21 @@ public class Player : MonoBehaviour {
     
     }
 
+    public int getNum()
+    {
+        return _playerNum;
+    }
+
     #region Death Functions
     public void respawn()
     {
+        
         GameManager.instance.bloodElementsAtWorldPosition(transform.position.x, transform.position.z);
-        GameManager.instance.registerPlayerDeath(_playerNum);
+        GameManager.instance.registerPlayerDeath(_playerNum,this);
         if(_spawner != null)
         {
             _spawner.respawn();
+            lastHit = null;
         }
     }
 

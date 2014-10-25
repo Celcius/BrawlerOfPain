@@ -11,7 +11,6 @@ public class GameManager {
 
      public GridElement[,] _elementMap;
      public MapGeneration mapInfo;
-
      public GameController controller = null;
 
     public ControllerMapping.CONTROLLERS[] _controllerMapping = 
@@ -19,6 +18,9 @@ public class GameManager {
         ControllerMapping.CONTROLLERS.KEYBOARD_1,
         ControllerMapping.CONTROLLERS.GAMEPAD_1,
         ControllerMapping.CONTROLLERS.GAMEPAD_2};
+   
+    public enum GameType {TIMER, SCORE, LIVES};
+    public GameType gameType = GameType.SCORE;
 
      public static GameManager instance
      {
@@ -34,11 +36,35 @@ public class GameManager {
 
     public void startGameOfDuration(float time)
      {
+         if (mapInfo.timerHud != null)
+             mapInfo.timerHud.SetActive(gameType == GameType.TIMER);
+         if (mapInfo.livesHud != null)
+             mapInfo.livesHud.SetActive(gameType == GameType.LIVES);
+         if (mapInfo.scoreHud != null)
+             mapInfo.scoreHud.SetActive(gameType == GameType.SCORE);
+
+
          if (controller != null)
              Object.Destroy(controller.gameObject);
          GameObject ob = new GameObject();
-         controller = ob.AddComponent<GameController>();
-         controller.setTimer(time);
+        switch(gameType)
+        {
+            case GameType.LIVES:
+                break;
+            case GameType.SCORE:
+
+                ScoreController scoreController = ob.AddComponent<ScoreController>();
+                scoreController.setWithMaxScore(mapInfo.MAX_SCORE);
+                controller = scoreController as ScoreController;
+                 break;
+            case GameType.TIMER:
+                 TimerController timeController = ob.AddComponent<TimerController>();
+                 timeController.setTimer(time);
+                 controller = timeController as GameController; 
+                 break;
+        }
+
+
        
      }
 
@@ -82,9 +108,9 @@ public class GameManager {
     }
 
 
-    public void registerPlayerDeath(int playerNum)
+    public void registerPlayerDeath(int playerNum, Player player)
     {
-        controller.registerPlayerDeath(playerNum);
+        controller.registerPlayerDeath(playerNum, player);
     }
     
     public void setPlayerMapping(ControllerMapping.CONTROLLERS mapping, int playerNum)

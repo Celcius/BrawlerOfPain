@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GridElement.cs" />
+    <Compile Include="Assets\Scripts\HoleElement.cs" />
     <Compile Include="Assets\Scripts\ImpactReceiver.cs" />
     <Compile Include="Assets\Scripts\Input\ControllerMapping.cs" />
     <Compile Include="Assets\Scripts\Input\InputEntry.cs" />
@@ -72,7 +73,9 @@
     <Compile Include="Assets\Scripts\MapGeneration.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerCounter.cs" />
+    <Compile Include="Assets\Scripts\ScoreController.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
+    <Compile Include="Assets\Scripts\TimerController.cs" />
     <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EditorLabel.cs" />
     <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EnableCameraDepthInForward.cs" />
     <Compile Include="Assets\third_party\InControl\InControl\Examples\Basic\CubeController.cs" />

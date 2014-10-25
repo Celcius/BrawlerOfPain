@@ -46,7 +46,7 @@ public class GridElement : MonoBehaviour {
         return null;
     }
 
-    public void fillBlood(float intensity)
+    public virtual void fillBlood(float intensity)
     {
         _isBloodied = true;
         if (_bloodiedIntensity < intensity)
@@ -68,7 +68,13 @@ public class GridElement : MonoBehaviour {
 
     static GridElement createHoleGridElement(int x, int y, float tileScale)
     {
-        return null;
+        GameObject go = Instantiate(Resources.Load("HoleTile")) as GameObject;
+        GridElement element = go.GetComponent<GridElement>();
+        if(element != null)
+        {
+            element.setGridElement(x, y, tileScale);
+        }
+        return element;
     }
 
 }

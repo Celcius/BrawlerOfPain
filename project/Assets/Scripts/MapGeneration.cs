@@ -120,6 +120,7 @@ public class MapGeneration : MonoBehaviour {
     }
 
 
+
     void setupSpawners()
     {
         for(int i = 0; i < PLAYER_COUNT; i ++)

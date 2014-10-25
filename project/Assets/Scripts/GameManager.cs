@@ -81,6 +81,15 @@ public class GameManager {
        
     }
 
+     public GridElement getCellAtWorldPosition(float x, float y)
+     {
+         int xPos = (int)(x / mapInfo.getMapScale());
+         int yPos = (int)(y / mapInfo.getMapScale());
+         if (xPos < _elementMap.GetLength(0) && yPos < _elementMap.GetLength(1))
+             return _elementMap[xPos, yPos];
+         return null;
+     }
+
 
     public void bloodElementsAtWorldPosition(float x, float y)
     {

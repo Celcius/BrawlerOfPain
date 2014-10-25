@@ -58,15 +58,25 @@ public class ScoreController : GameController {
         {
             int maxScore = 0;
             int[] board = new int[_playerScores.Length];
+            for(int i = 0; i <board.Length; i++)
+                board[i]= -1;
+
             for(int i = 0; i < board.Length;i++)
             {
                 for(int j = i; j < board.Length; j++)
                 {
                     int score = _playerScores[j];
-                    if(score > maxScore)
+                    if(score >= maxScore)
                     {
-                        maxScore = score;
-                        board[i] = j;
+                        bool found = false;
+                        for (int k = 0; k < board.Length; k++)
+                            found = found || board[k] == j;
+
+                        if(!found)
+                        { 
+                            maxScore = score;
+                            board[i] = j;
+                        }
                     }
                 }
                 maxScore = 0;

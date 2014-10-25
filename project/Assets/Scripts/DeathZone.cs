@@ -19,7 +19,11 @@ public class DeathZone : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
-            Debug.Log("KILL!");
+            Player player = other.GetComponent<Player>();
+            if(player != null)
+            {
+                player.respawn();
+            }
         }
 
     }

@@ -3,12 +3,17 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
+    private const int MIN_Y = -10;
+
 	public float speed = 10f;
 	private PlayerController _inputController;
 	private CharacterMotor motor;
 	private Vector3 currentPosition;
-
+	
 	public BoxCollider attackCollider;
+    private Spawner _spawner;
+
+    private int _playerNum;
 
 	public bool autoRotate = true;
 	public float maxRotationSpeed = 360;
@@ -21,6 +26,10 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		handleMovement ();
+
+		if (transform.position.y < MIN_Y)
+			respawn();
+
 		handleAttack ();
 	}
 
@@ -38,6 +47,8 @@ public class Player : MonoBehaviour {
 	void OnTriggerStay(Collider other)
 	{
 		handleCollision (other);
+
+        
 	}
 
 	void handleCollision(Collider other)
@@ -87,6 +98,7 @@ public class Player : MonoBehaviour {
 
 		var directionVector = new Vector3(_inputController.Direction.x, _inputController.Direction.y, 0);
 
+//		Debug.Log ("directionVector: " + directionVector);
 		if (directionVector != Vector3.zero) {
 			// Get the length of the directon vector and then normalize it
 			// Dividing by the length is cheaper than normalizing when we already have the length anyway
@@ -136,4 +148,43 @@ public class Player : MonoBehaviour {
 		float value = Mathf.Min(1, angle / Vector3.Angle(from, to));
 		return Vector3.Slerp(from, to, value);
 	}
+
+    public void setNum(int num)
+    {
+        _playerNum = num;
+        PlayerController controller = GetComponent<PlayerController>();
+        switch(num)
+        {
+            case 0:
+                controller.controller = ControllerMapping.CONTROLLERS.KEYBOARD_1;
+                break;
+            case 1:
+                controller.controller = ControllerMapping.CONTROLLERS.KEYBOARD_2;
+                break;
+            case 2:
+                controller.controller = ControllerMapping.CONTROLLERS.GAMEPAD_1;
+                break;
+            case 3:
+                controller.controller = ControllerMapping.CONTROLLERS.GAMEPAD_2;
+                break;
+
+        }
+    
+    }
+
+    #region Death Functions
+    public void respawn()
+    {
+        MapService.instance.bloodElementsAtWorldPosition(transform.position.x, transform.position.z);
+        if(_spawner != null)
+        {
+            _spawner.respawn();
+        }
+    }
+
+    public void setSpawner(Spawner spawner)
+    {
+        this._spawner = spawner;
+    }
+    #endregion
 }

@@ -7,6 +7,8 @@ public class GridElement : MonoBehaviour {
     public const string FLOOR_CODE = "f";
     public const string HOLE_CODE = "o";
 
+    public bool _isBloodied = false;
+
     protected const float unityScale = 10.0f;
 
     protected int _gridPosX;
@@ -30,29 +32,37 @@ public class GridElement : MonoBehaviour {
 	
 	}
 
-    public static void createGridElement(string code, int x, int y, float tileScale)
+    public static GridElement createGridElement(string code, int x, int y, float tileScale)
     {
         if (FLOOR_CODE.CompareTo(code) == 0)
         {
-            createPlaneFloorGridElement(x , y, tileScale);
+            return createPlaneFloorGridElement(x , y, tileScale);
         }
         else if( HOLE_CODE.CompareTo(code)== 0)
         {
-            createHoleGridElement(x, y, tileScale);
+            return createHoleGridElement(x, y, tileScale);
         }
-;
+        return null;
     }
 
-    static void createPlaneFloorGridElement(int x, int y, float tileScale)
+    public void fillBlood()
+    {
+        _isBloodied = true;
+        transform.renderer.material = (Material)Resources.Load("Materials/blue_color") as Material;
+
+    }
+
+    static GridElement createPlaneFloorGridElement(int x, int y, float tileScale)
     {
         GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        plane.AddComponent<BoxCollider>();
-        plane.AddComponent<GridElement>().setGridElement(x, y, tileScale); 
-    }    
+        plane.AddComponent<GridElement>().setGridElement(x, y, tileScale);
+        plane.tag = "MapBlock";
+        return plane.GetComponent<GridElement>();
+    }
 
-    static void  createHoleGridElement(int x, int y, float tileScale)
+    static GridElement createHoleGridElement(int x, int y, float tileScale)
     {
-
+        return null;
     }
 
 }

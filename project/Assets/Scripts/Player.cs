@@ -46,7 +46,13 @@ public class Player : MonoBehaviour {
 		_inputController = GetComponent<PlayerController>();
 		motor = GetComponent<CharacterMotor> ();
 		trailRend = GetComponent<TrailRenderer>();
+		
+		OnSpawnEvent = DummyOnSpawn;
+		OnCollision = DummyOnCollision;
 	}
+	
+	private void DummyOnSpawn(Player player) {}
+	private void DummyOnCollision(Collider colision) {}
 
 	// Update is called once per frame
 	void Update () {

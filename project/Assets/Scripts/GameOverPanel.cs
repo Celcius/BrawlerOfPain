@@ -12,7 +12,7 @@ public class GameOverPanel : MonoBehaviour {
 
     bool showing = false;
     float elapsedTime = 0.0f;
-    float neededTime = 10*60;
+    float neededTime = 30*100;
 
     void Update ()
     {

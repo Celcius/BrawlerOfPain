@@ -9,7 +9,10 @@ public class Trap : MonoBehaviour {
         {
             Player player = other.gameObject.GetComponent<Player>();
             if (player != null)
-              player.respawn();
+            {
+                player.respawn();
+                SoundManager.Instance.PlayTrapKill();
+            }
         }
     }
 
@@ -24,8 +27,11 @@ public class Trap : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             Player player = other.gameObject.GetComponentInParent<Player>();
-            if(player!= null)
+            if (player != null)
+            {
                 player.respawn();
+                SoundManager.Instance.PlayTrapKill();
+            }
         }
     }
 }

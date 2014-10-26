@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
         # region KEYBOARDS
 
-        if (controller == ControllerMapping.CONTROLLERS.KEYBOARD_1 || controller == ControllerMapping.CONTROLLERS.KEYBOARD_2)
+        if (controller == ControllerMapping.CONTROLLERS.GAMEPAD_3 || controller == ControllerMapping.CONTROLLERS.GAMEPAD_4)
         {
             processKeyboard();
         }

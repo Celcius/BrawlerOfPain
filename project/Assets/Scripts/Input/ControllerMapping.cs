@@ -21,6 +21,8 @@ public class ControllerMapping {
         Keyboards = new Dictionary<CONTROLLERS, BaseKeyboard>();
         Keyboards.Add(CONTROLLERS.KEYBOARD_1, BaseKeyboard.createDefaultKeyboard1());
         Keyboards.Add(CONTROLLERS.KEYBOARD_2, BaseKeyboard.createDefaultKeyboard2());
+		Keyboards.Add(CONTROLLERS.GAMEPAD_3, BaseKeyboard.createDefaultKeyboard1());
+		Keyboards.Add(CONTROLLERS.GAMEPAD_4, BaseKeyboard.createDefaultKeyboard2());
     }
 	
 }

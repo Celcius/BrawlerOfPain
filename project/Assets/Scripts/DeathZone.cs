@@ -22,6 +22,7 @@ public class DeathZone : MonoBehaviour {
             Player player = other.GetComponent<Player>();
             if(player != null)
             {
+                SoundManager.PlayFallDeath();
                 player.respawn();
             }
         }

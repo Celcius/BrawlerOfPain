@@ -25,7 +25,7 @@ public class Trap : MonoBehaviour {
             Player player = obj.GetComponent<Player>();
             if (player != null)
             {
-                SoundManager.PlayTrapKill();
+                SoundManager.PlayTrapDeath();
                 player.respawn();
             }
         }

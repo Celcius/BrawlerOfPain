@@ -60,8 +60,11 @@ public class Player : MonoBehaviour {
 	void Update () {
 		handleMovement ();
 
-		if (transform.position.y < MIN_Y)
-			respawn();
+        if (transform.position.y < MIN_Y)
+        {
+            SoundManager.PlayFallDeath();
+            respawn();
+        }
 	}
 
 

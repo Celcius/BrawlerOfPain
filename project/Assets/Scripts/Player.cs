@@ -83,7 +83,7 @@ public class Player : MonoBehaviour {
 		OnCollision(other);
 		//pickItems.HandleCollision(other);
 		
-		Debug.Log ("Colliding "+gameObject.name+" with "  + other.gameObject.name);
+		//Debug.Log ("Colliding "+gameObject.name+" with "  + other.gameObject.name);
 		
 		Player otherPlayer = other.GetComponent<Player> ();
 		if (otherPlayer == this || otherPlayer == null)

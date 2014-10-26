@@ -23,7 +23,7 @@ public class PickItems : MonoBehaviour {
 	
 	public void HandleCollision(Collider other)
 	{
-		Debug.Log ("HAndling colliion on cueb");
+		//Debug.Log ("HAndling colliion on cueb");
 		PickableItem item = other.GetComponent<PickableItem>();
 		if (item && currentItem == null){
 			Debug.Log("picked up item");

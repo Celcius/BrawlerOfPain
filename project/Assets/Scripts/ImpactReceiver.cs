@@ -10,18 +10,22 @@ public class ImpactReceiver : MonoBehaviour {
 	Vector3 impact = Vector3.zero;
 	private CharacterController character;
 	private Player player;
+	
+	public GameObject targetBlink;
 	private SpriteRenderer renderer;
 	
 	public ImpactDelegate OnImpact;
 	
 	public bool invincible = false;
+
+    private bool waitForImpact = false;
 	
 	// Use this for initialization
 	void Start () {
 		character = GetComponent<CharacterController>();
 		
 		player = GetComponent<Player>();
-		renderer = GetComponentInChildren<SpriteRenderer>();
+		renderer = targetBlink.GetComponent<SpriteRenderer>();
 		player.OnSpawnEvent += OnSpawn;
 	}
 	
@@ -34,22 +38,31 @@ public class ImpactReceiver : MonoBehaviour {
 	}
 	// call this function to add an impact force:
 	public void AddImpact(Vector3 dir, float force){
-		if (invincible) return;
+        if (invincible || waitForImpact) return;
 		
 		dir.Normalize();
 		if (dir.y < 0) dir.y = -dir.y; // reflect down force on the ground
 		impact += dir.normalized * force / mass;
-		
-		if (OnImpact != null)
-			OnImpact();
+
+        waitForImpact = true;
+        StartCoroutine(WaitForImpact(0.1f));
+		OnImpact();
 	}
-	
-	IEnumerator SpawnTimer(float waitSeconds) {
-		yield return new WaitForSeconds(waitSeconds);
-		invincible = false;
-	}
-	
-	IEnumerator BlinkPlayer(float duration)
+
+
+    IEnumerator SpawnTimer(float waitSeconds)
+    {
+        yield return new WaitForSeconds(waitSeconds);
+        invincible = false;
+    }
+
+    IEnumerator WaitForImpact(float waitSeconds)
+    {
+        yield return new WaitForSeconds(waitSeconds);
+        waitForImpact = false;
+    }
+
+    IEnumerator BlinkPlayer(float duration)
 	{
 		float counter = 0;
 		while(counter < duration){

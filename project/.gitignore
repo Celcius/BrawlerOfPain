@@ -2,7 +2,6 @@
 /Temp/
 *.exe
 /*_Data/
-/obj/
 *.suo
 *.sln
 *.csproj

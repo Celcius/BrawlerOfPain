@@ -27,6 +27,9 @@ public class Trap : MonoBehaviour {
                 player = obj.GetComponentInParent<Player>();
             if (player != null)
             {
+                GameObject ob = Instantiate(Resources.Load("Prefabs/BloodParticlesFinal")) as GameObject;
+                ob.transform.position = transform.position;
+                GameManager.instance.bloodElementsAtWorldPosition(player.transform.position.x, player.transform.position.z);
                 SoundManager.PlayTrapDeath();
                 player.respawn();
             }

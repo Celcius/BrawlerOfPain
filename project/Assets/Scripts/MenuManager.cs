@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
+
 public class MenuManager : MonoBehaviour {
     public GameObject MainScreen;
     public GameObject OptionsScreen;
@@ -19,16 +20,46 @@ public class MenuManager : MonoBehaviour {
     [SerializeField]
     public Text _playersText;
 
-    public bool _timedMode = false;
-    public bool _scoreMode = true;
-    public bool _livesMode = false;
-    public bool _vIPMode = false;
+    [SerializeField]
+    Toggle _timeToggle;
+    [SerializeField]
+    Toggle _scoreToggle;
+    [SerializeField]
+    Toggle _liveToggle;
+    [SerializeField]
+    Toggle _vipToggle;
+
 
     void Start()
     {
   //      DontDestroyOnLoad(gameObject);
         MainScreen.SetActive(false);
         EndScreen.SetActive(false);
+
+        _playersText.text = ""+ DataHolder.instance.playerCount;
+        _timedText.text = "" + DataHolder.instance.time;
+        _scoreText.text = "" + DataHolder.instance.score;
+        _vipText.text = "" + DataHolder.instance.vipScore;
+        _liveText.text = "" + DataHolder.instance.lives;
+
+        switch( DataHolder.instance.gameType)
+        {
+            case GameManager.GameType.LIVES:
+                _liveToggle.isOn = true;
+                break;
+            case GameManager.GameType.SCORE:
+                _scoreToggle.isOn = true;
+                break;
+            case GameManager.GameType.TIMER:
+
+                _timeToggle.isOn = true;
+                break;
+            case GameManager.GameType.VIP:
+                _vipToggle.isOn = true;
+                break;
+        }
+
+      
     }
 
 
@@ -37,66 +68,45 @@ public class MenuManager : MonoBehaviour {
     public void StartGame()
     {
         int playerCount = int.Parse(_playersText.text);
-        if (_timedMode)
+        if (playerCount <= 1)
+            playerCount = 2;
+
+        float timer = float.Parse(_timedText.text);
+        int score = int.Parse(_scoreText.text);
+        int vipscore = int.Parse(_vipText.text);
+        int lives = int.Parse(_liveText.text);
+        GameManager.GameType gameType = GameManager.GameType.SCORE;
+        if (_timeToggle.isOn)
         {
-          
-            float timer = float.Parse(_timedText.text);
+            gameType = GameManager.GameType.TIMER;
+
             Debug.Log("TIME " +timer);
         }
-        else if (_scoreMode)
+        else if (_scoreToggle.isOn)
         {
 
-            int score = int.Parse(_scoreText.text);
+            gameType = GameManager.GameType.SCORE;
             Debug.Log("SCORE " +score);
         }
-        else if (_livesMode)
+        else if (_liveToggle.isOn)
         {
-
-            int lives = int.Parse(_liveText.text);
+            gameType = GameManager.GameType.LIVES;
             Debug.Log("LIVES " +lives);
         }
-        else if (_vIPMode)
+        else if (_vipToggle.isOn)
         {
-
-            int score = int.Parse(_vipText.text);
+            gameType = GameManager.GameType.VIP;
             Debug.Log("VIP " + score);
         }
+        DataHolder.instance.playerCount = playerCount;
+        DataHolder.instance.time = timer;
+        DataHolder.instance.score = score;
+        DataHolder.instance.vipScore = vipscore;
+        DataHolder.instance.lives = lives;
+        DataHolder.instance.gameType = gameType;
+        DataHolder.instance.init();
         Application.LoadLevel("MapCreation");
 
-    }
-
-    public void ToggleTimed()
-    {
-        _timedMode = true;
-        _scoreMode = false;
-        _livesMode = false;
-        _vIPMode = false;
-        Debug.Log("Time " + _timedMode);
-
-    }
-    public void ToggleScore()
-    {
-        _timedMode = false;
-        _scoreMode = true;
-        _livesMode = false;
-        _vIPMode = false;
-        Debug.Log("Score " + _scoreMode);
-    }
-    public void ToggleLives()
-    {
-        _timedMode = false;
-        _scoreMode = false;
-        _livesMode = true;
-        _vIPMode = false;
-        Debug.Log("Lives " + _livesMode);
-    }
-    public void ToggleVIP()
-    {
-        _timedMode = false;
-        _scoreMode = false;
-        _livesMode = false;
-        _vIPMode = true;
-        Debug.Log("VIP " + _vIPMode);
     }
 
 }

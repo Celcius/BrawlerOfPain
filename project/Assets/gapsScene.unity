@@ -186,7 +186,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_Enabled: 0
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
@@ -626,7 +626,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_Enabled: 0
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
@@ -1031,10 +1031,10 @@ MonoBehaviour:
   _liveText: {fileID: 204756388}
   _vipText: {fileID: 1566153345}
   _playersText: {fileID: 1605682110}
-  _timedMode: 0
-  _scoreMode: 1
-  _livesMode: 0
-  _vIPMode: 0
+  _timeToggle: {fileID: 227090675}
+  _scoreToggle: {fileID: 1032245800}
+  _liveToggle: {fileID: 1335802840}
+  _vipToggle: {fileID: 6482725}
 --- !u!1 &614391410
 GameObject:
   m_ObjectHideFlags: 0
@@ -1985,7 +1985,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_Enabled: 0
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
@@ -2558,7 +2558,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_Enabled: 1
+        m_Enabled: 0
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
@@ -3769,7 +3769,6 @@ GameObject:
   - 224: {fileID: 2073707274}
   - 222: {fileID: 2073707276}
   - 114: {fileID: 2073707275}
-  - 114: {fileID: 2073707277}
   m_Layer: 5
   m_Name: Options Screen
   m_TagString: Untagged
@@ -3825,14 +3824,3 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2073707273}
---- !u!114 &2073707277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2073707273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2455559deea0ebe4da74b7ae690ea26e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

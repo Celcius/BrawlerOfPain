@@ -59,6 +59,7 @@ public class MapGeneration : MonoBehaviour {
                    
 	// Use this for initialization
 	void Start () {
+        loadData();
         map = new string[MAP_WIDTH, MAP_HEIGHT];
         GameManager.instance.setMap(new GridElement[MAP_WIDTH, MAP_HEIGHT], this);
         initializeGrid();
@@ -69,6 +70,19 @@ public class MapGeneration : MonoBehaviour {
 
         GameManager.instance.startGame(); // will start Counting
    	}
+
+    void loadData()
+    {
+        gameType = DataHolder.instance.gameType;
+        PLAYER_COUNT = DataHolder.instance.playerCount;
+        GAME_TIME = DataHolder.instance.time;
+        if(DataHolder.instance.gameType == GameManager.GameType.VIP) // Should really be 2 difernt variables, too late to change now
+            MAX_SCORE = DataHolder.instance.vipScore;
+        else
+            MAX_SCORE = DataHolder.instance.score;
+        LIVES = DataHolder.instance.lives;
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {

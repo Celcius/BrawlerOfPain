@@ -14,10 +14,10 @@ public class Spawner : MonoBehaviour {
 		//Color c = srend.material.color;
 		//c = colors[num];
 		renderers[1].material.color = Player.playerColors[num];
-		/*TrailRenderer trender = ob.GetComponent<TrailRenderer>();
-		Color newC = Player.playerColors[num];
-		newC.a = 0.1f;
-		trender.material.SetColor ("_TintColor", newC);*/
+		TrailRenderer trender = ob.GetComponent<TrailRenderer>();
+		//Color newC = Player.playerColors[num];
+		//newC.a = 0.1f;
+		trender.material.SetColor ("_TintColor", Player.playerColors[num]);
 		
 		/*foreach(SpriteRenderer srend in renderers){
 			srend.material.color = colors[num];

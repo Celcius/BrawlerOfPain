@@ -7,6 +7,7 @@ public class PickItems : MonoBehaviour {
 	private Player player;
 	private ImpactReceiver impactReceiver;
 	// Use this for initialization
+
 	void Start () {
 		player = GetComponent<Player>();
 		impactReceiver = GetComponent<ImpactReceiver>();
@@ -40,6 +41,7 @@ public class PickItems : MonoBehaviour {
 	    	currentItem.collider.enabled = true;
 		    currentItem.rigidbody.isKinematic = false;
 	    	currentItem = null;
+
             GameManager.instance.vipHolder = null;
         }
 	}

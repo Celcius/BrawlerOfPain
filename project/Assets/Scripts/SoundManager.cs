@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SoundManager : MonoBehaviour {
 
@@ -9,6 +10,8 @@ public class SoundManager : MonoBehaviour {
     public AudioClip Dash;
     public AudioClip TrapDeath;
     public AudioClip FallDeath;
+
+    private HashSet<AudioClip> waitingForSounds = new HashSet<AudioClip>();
 
     void Awake () {
         if (Instance == null)
@@ -24,30 +27,38 @@ public class SoundManager : MonoBehaviour {
 
     public static void PlayHit()
     {
-        if (!Instance)
-            return;
-        Instance.audio.PlayOneShot(Instance.Hit);
+        PlaySound(Instance.Hit);
     }
 
     public static void PlayDash()
     {
-        if (!Instance)
-            return;
-        Instance.audio.PlayOneShot(Instance.Dash);
+        PlaySound(Instance.Dash);
     }
 
     public static void PlayTrapDeath()
     {
-        if (!Instance)
-            return;
-        Instance.audio.PlayOneShot(Instance.TrapDeath);
+        PlaySound(Instance.TrapDeath);
     }
 
     public static void PlayFallDeath()
     {
-        if (!Instance)
+        PlaySound(Instance.FallDeath);
+    }
+
+    static void PlaySound(AudioClip sound)
+    {
+        if (!Instance || Instance.waitingForSounds.Contains(sound))
             return;
-        Instance.audio.PlayOneShot(Instance.FallDeath);
+
+        Instance.waitingForSounds.Add(sound);
+        Instance.StartCoroutine(Instance.StopWaitingForSound(sound));
+        Instance.audio.PlayOneShot(sound);
+    }
+
+    IEnumerator StopWaitingForSound(AudioClip sound)
+    {
+        yield return new WaitForSeconds(0.1f);
+        waitingForSounds.Remove(sound);
     }
 
 }

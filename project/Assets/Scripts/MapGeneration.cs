@@ -96,17 +96,24 @@ public class MapGeneration : MonoBehaviour {
         GameObject trap3 = Instantiate(Resources.Load("Prefabs/Trap")) as GameObject;
         GameObject trap4 = Instantiate(Resources.Load("Prefabs/Trap")) as GameObject;
 
+        
         float trapDiff = 0.5f;
-        trap1.transform.position = new Vector3(trapDiff * _tileScale -1, 0.5f, trapDiff * _tileScale-2);
-        trap2.transform.position = new Vector3((MAP_WIDTH - trapDiff) * _tileScale - 2, 0.5f, trapDiff * _tileScale - 2);
-        trap3.transform.position = new Vector3((MAP_WIDTH - trapDiff) * _tileScale - 2, 0.5f, (MAP_HEIGHT - trapDiff) * _tileScale - 1);
-        trap4.transform.position = new Vector3(trapDiff * _tileScale - 1, 0.5f, (MAP_HEIGHT - trapDiff) * _tileScale - 1);
+        trap1.transform.position = new Vector3(trapDiff * _tileScale + 0.5f * _tileScale, 0.5f, trapDiff * _tileScale );
+        trap2.transform.position = new Vector3((MAP_WIDTH - trapDiff) * _tileScale - 2* _tileScale, 0.5f, trapDiff * _tileScale);
+        trap3.transform.position = new Vector3((MAP_WIDTH - trapDiff) * _tileScale - 2* _tileScale, 0.5f, (MAP_HEIGHT - trapDiff) * _tileScale -  1.5f* _tileScale); // topRight
+        trap4.transform.position = new Vector3(trapDiff * _tileScale + 0.5f* _tileScale, 0.5f, (MAP_HEIGHT - trapDiff) * _tileScale -1.5f* _tileScale); // Top Left
+
+        if(gameType == GameManager.GameType.TIMER)
+        { 
+           GameObject trap5 = Instantiate(Resources.Load("Prefabs/Trap")) as GameObject; 
+         trap5.transform.position = new Vector3((MAP_WIDTH - trapDiff - 1) * _tileScale / 2, -0.5f, (MAP_HEIGHT - trapDiff - 1) * _tileScale / 2);
+        }
     }
 
     void initializeGrid()
     {
         for(int x = 0; x < MAP_WIDTH; x++)
-            for(int y = 0; y < MAP_WIDTH; y++)
+            for(int y = 0; y < MAP_HEIGHT; y++)
             {
                 if(x < HOLE_MARGIN || x > MAP_WIDTH-HOLE_MARGIN ||
                     y < HOLE_MARGIN || y > MAP_HEIGHT-HOLE_MARGIN)
@@ -168,7 +175,7 @@ public class MapGeneration : MonoBehaviour {
             else if(i ==1)
                 position = new Vector3(MAP_WIDTH - HOLE_MARGIN - PLAYER_START_OFFSET, SPAWNER_HEIGHT, MAP_HEIGHT - HOLE_MARGIN - PLAYER_START_OFFSET);
            
-            spawner.transform.position = position;
+            spawner.transform.position = position*_tileScale;
 
             spawner.spawnPlayer(i);
 

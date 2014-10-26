@@ -4,7 +4,7 @@ using System.Collections;
 public class Shadow : MonoBehaviour {
 
     float maxHeight = 1.03f;
-    float startY = 0.6f;
+    float startY = 1.0f;
     float maxDelta = 5;
     [SerializeField]
     GameObject _parent;

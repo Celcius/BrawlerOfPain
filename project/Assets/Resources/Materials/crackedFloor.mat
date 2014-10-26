@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Floor
+  m_Name: crackedFloor
   m_Shader: {fileID: 4800000, guid: 342ee69b39b3b0c4aab3bf3873b39b44, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
@@ -24,56 +24,28 @@ Material:
         first:
           name: _specular
         second:
-          m_Texture: {fileID: 2800000, guid: 067161bf4c6bde4448ec89ccf12870e1, type: 3}
+          m_Texture: {fileID: 2800000, guid: ef476616cc1ffe349bc734cd50057522, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _gloss
         second:
-          m_Texture: {fileID: 2800000, guid: bd2598416ef00c24b9e32fc42d34fb9d, type: 3}
+          m_Texture: {fileID: 2800000, guid: 667966addb206a54fa4e486116a59773, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _normal
         second:
-          m_Texture: {fileID: 2800000, guid: 68aa07421a3a2724e949ea53f348e028, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _node_2
-        second:
-          m_Texture: {fileID: 2800000, guid: 255f84ce3dcfb6f449373a14493239d6, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _node_8
-        second:
-          m_Texture: {fileID: 2800000, guid: d1c2855e07dbe6748a52055658cfd55d, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _node_16
-        second:
-          m_Texture: {fileID: 2800000, guid: 6cc106b023a1dd24781cd703b54831a2, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _node_48
-        second:
-          m_Texture: {fileID: 2800000, guid: a25752e6a234cb54e8efc4ba419a7972, type: 3}
+          m_Texture: {fileID: 2800000, guid: 58a8eec5ccd05bb4e990a9193cd10baf, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _diffTex
         second:
-          m_Texture: {fileID: 2800000, guid: 788e9e1c91f172946beae9800a3bc8b8, type: 3}
+          m_Texture: {fileID: 2800000, guid: ea14c3ed1696aba49a132d3f548fb3b1, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -91,10 +63,6 @@ Material:
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
-      data:
-        first:
-          name: _blend
-        second: 1.33000004
       data:
         first:
           name: _bloodBlend

@@ -62,19 +62,26 @@ public class GridElement : MonoBehaviour {
         GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Cube);
         plane.AddComponent<GridElement>().setGridElement(x, y, tileScale);
         plane.tag = "MapBlock";
-        plane.renderer.material = (Material)Resources.Load("Materials/Floor") as Material;
+        int rand = Random.Range(0,9);
+        if (rand < 8)
+            plane.renderer.material = (Material)Resources.Load("Materials/Floor") as Material;
+        else
+            plane.renderer.material = (Material)Resources.Load("Materials/crackedFloor") as Material;
         return plane.GetComponent<GridElement>();
     }
 
     static GridElement createHoleGridElement(int x, int y, float tileScale)
     {
+        /*
         GameObject go = Instantiate(Resources.Load("Prefabs/HoleTile")) as GameObject;
         GridElement element = go.GetComponent<GridElement>();
         if(element != null)
         {
             element.setGridElement(x, y, tileScale);
         }
-        return element;
+         return element;
+         */
+        return null;
     }
 
 }

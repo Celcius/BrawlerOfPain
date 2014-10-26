@@ -18,12 +18,14 @@ public class GameManager {
 
     public ControllerMapping.CONTROLLERS[] _controllerMapping = 
         {
-		ControllerMapping.CONTROLLERS.KEYBOARD_2,
-		ControllerMapping.CONTROLLERS.KEYBOARD_1,
+		//ControllerMapping.CONTROLLERS.KEYBOARD_2,
+		//ControllerMapping.CONTROLLERS.KEYBOARD_1,
         ControllerMapping.CONTROLLERS.GAMEPAD_1,
-        ControllerMapping.CONTROLLERS.GAMEPAD_2
-        };
-   
+        ControllerMapping.CONTROLLERS.GAMEPAD_2,
+		ControllerMapping.CONTROLLERS.GAMEPAD_3,
+		ControllerMapping.CONTROLLERS.GAMEPAD_4
+	};
+	
     public enum GameType {TIMER, SCORE, LIVES, VIP};
     public GameType gameType;
 

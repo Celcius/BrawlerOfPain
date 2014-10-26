@@ -185,12 +185,12 @@ public class PlayerController : MonoBehaviour
 
     void processGamepad(InputDevice inputDevice)
     {
-        _state[ACTIONS.JUMP] |= inputDevice.Action2.IsPressed;
+        _state[ACTIONS.JUMP] |= inputDevice.Action1.IsPressed;
         _state[ACTIONS.LEFT] |= inputDevice.Direction.Left;
         _state[ACTIONS.RIGHT] |= inputDevice.Direction.Right;
         _state[ACTIONS.DOWN] |= inputDevice.Direction.Down;
         _state[ACTIONS.UP] |= inputDevice.Direction.Up;
-		_state [ACTIONS.ACTION_1] |= inputDevice.Action1.IsPressed;
+		_state [ACTIONS.ACTION_1] |= inputDevice.Action2.IsPressed;
 		_state [ACTIONS.ACTION_2] |= inputDevice.Action3.IsPressed;
 		
 		Direction.Set (inputDevice.Direction.X, inputDevice.Direction.Y);

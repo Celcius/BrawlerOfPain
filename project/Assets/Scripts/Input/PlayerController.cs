@@ -15,7 +15,8 @@ public class PlayerController : MonoBehaviour
         UP,
         DOWN,
         JUMP,
-		ACTION_1
+		ACTION_1,
+		ACTION_2
     }
 
     public ControllerMapping.CONTROLLERS controller = ControllerMapping.CONTROLLERS.KEYBOARD_1;
@@ -188,6 +189,7 @@ public class PlayerController : MonoBehaviour
         _state[ACTIONS.DOWN] |= inputDevice.Direction.Down;
         _state[ACTIONS.UP] |= inputDevice.Direction.Up;
 		_state [ACTIONS.ACTION_1] |= inputDevice.Action1.IsPressed;
+		_state [ACTIONS.ACTION_2] |= inputDevice.Action3.IsPressed;
 		
 		Direction.Set (inputDevice.Direction.X, inputDevice.Direction.Y);
     }
@@ -200,6 +202,7 @@ public class PlayerController : MonoBehaviour
         _state[ACTIONS.RIGHT] |= Input.GetKey(ControllerMapping.Keyboards[controller].RIGHT);
         _state[ACTIONS.DOWN] |= Input.GetKey(ControllerMapping.Keyboards[controller].DOWN);
 		_state [ACTIONS.ACTION_1] |= Input.GetKey (ControllerMapping.Keyboards [controller].ACTION_1);
+		_state [ACTIONS.ACTION_2] |= Input.GetKey (ControllerMapping.Keyboards [controller].ACTION_2);
 
 		float dX = 0f;
 		float dY = 0f;

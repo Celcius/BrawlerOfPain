@@ -22,7 +22,6 @@ public class PickItems : MonoBehaviour {
 	
 	private void HandleCollision(Collider other)
 	{
-		Debug.Log ("Collision Delegate works" + other.name);
 		PickableItem item = other.GetComponent<PickableItem>();
 		if (item && currentItem == null){
 			currentItem = item;

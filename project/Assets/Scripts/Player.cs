@@ -25,6 +25,11 @@ public class Player : MonoBehaviour {
 	public bool autoRotate = true;
 	public float maxRotationSpeed = 360;
 	
+	public bool dashing = false;
+	private float _dashingTimer = 0;
+	private bool _canDashAgain = true;
+	private float _canDashTimer = 0;
+	
 	public SpawnDelegate OnSpawnEvent;
 	public CollisionDelegate OnCollision;
 	
@@ -37,8 +42,6 @@ public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if(!rigidbody.isKinematic)
-            rigidbody.isKinematic = true;
 		handleMovement ();
 
 		if (transform.position.y < MIN_Y)
@@ -66,7 +69,8 @@ public class Player : MonoBehaviour {
 		if (otherPlayer == this || otherPlayer == null)
 			return;
 		
-		if (!_inputController.justPressed (PlayerController.ACTIONS.ACTION_1)) {
+		//if (!dashing) return;
+		if (!dashing && !_inputController.justPressed (PlayerController.ACTIONS.ACTION_1)) {
 			return;
 		}
 
@@ -141,6 +145,42 @@ public class Player : MonoBehaviour {
 			transform.rotation = Quaternion.LookRotation(newForward, transform.up);
 		}
 		
+		if (_dashingTimer > 0){
+			_dashingTimer += Time.deltaTime;
+			if (_dashingTimer > 0.1f)
+			{
+				motor.SetVelocity(Vector3.zero);
+				_dashingTimer = 0f;
+				dashing = false;
+				animator.SetBool("dashing", false);
+			}
+		}
+		
+		if (_canDashTimer > 0){
+			_canDashTimer += Time.deltaTime;
+			if (_canDashTimer > 3f)
+			{
+				_canDashTimer = 0;
+				_canDashAgain = true;
+			}
+		}
+		
+		Debug.Log ("can Dash? = " + _canDashAgain);
+		if (_canDashAgain && _inputController.pressed(PlayerController.ACTIONS.ACTION_2)){
+			dashing = true;
+			_canDashAgain = false;
+			_dashingTimer = 0.0001f;
+			_canDashTimer = 0.0001f;
+			animator.SetBool("dashing", true);
+			motor.SetVelocity(directionVector*50);
+		}
+		
+		
+		
+		
+		
+		
+		
 		if (animator != null) handleMovementAnimation(dirX, dirY);
 	}
 
@@ -203,9 +243,9 @@ public class Player : MonoBehaviour {
             lastHit = null;
 			OnSpawnEvent(this);
 
-            rigidbody.isKinematic = false;
-            rigidbody.velocity = new Vector3(0,0,0);
-            rigidbody.angularVelocity = new Vector3(0, 0, 0);
+            
+            /*rigidbody.velocity = new Vector3(0,0,0);
+            rigidbody.angularVelocity = new Vector3(0, 0, 0);*/
 
 
         }

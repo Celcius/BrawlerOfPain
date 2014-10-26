@@ -75,7 +75,7 @@ public class MapGeneration : MonoBehaviour {
     {
         gameType = DataHolder.instance.gameType;
         PLAYER_COUNT = DataHolder.instance.playerCount;
-        GAME_TIME = DataHolder.instance.time;
+        GAME_TIME = DataHolder.instance.time/60;
         if(DataHolder.instance.gameType == GameManager.GameType.VIP) // Should really be 2 difernt variables, too late to change now
             MAX_SCORE = DataHolder.instance.vipScore;
         else

@@ -7,7 +7,7 @@ public class DataHolder : MonoBehaviour {
 
 
     public int playerCount = 4;
-    public float time = 2.5f;
+    public float time = 150.0f;
     public int score = 20;
     public int lives = 5;
     public int vipScore = 20;

@@ -3,6 +3,7 @@ using System.Collections;
 
 public delegate void ImpactDelegate ();
 
+[RequireComponent (typeof (Player))]
 public class ImpactReceiver : MonoBehaviour {
 
 	float mass = 3.0F; // defines the character mass
@@ -39,7 +40,8 @@ public class ImpactReceiver : MonoBehaviour {
 		if (dir.y < 0) dir.y = -dir.y; // reflect down force on the ground
 		impact += dir.normalized * force / mass;
 		
-		OnImpact();
+		if (OnImpact != null)
+			OnImpact();
 	}
 	
 	IEnumerator SpawnTimer(float waitSeconds) {
@@ -55,7 +57,6 @@ public class ImpactReceiver : MonoBehaviour {
 			var c = renderer.material.color;
 			c.a = Mathf.Sin (counter*10)/2 + 0.5f;
 			renderer.material.color = c;
-			Debug.Log ("alpha= " + c.a);
 			yield return null;
 		}
 	}

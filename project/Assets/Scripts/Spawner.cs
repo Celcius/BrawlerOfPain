@@ -14,6 +14,8 @@ public class Spawner : MonoBehaviour {
 		//Color c = srend.material.color;
 		//c = colors[num];
 		renderers[1].material.color = Player.playerColors[num];
+		TrailRenderer trender = ob.GetComponent<TrailRenderer>();
+		trender.material.SetColor ("_TintColor", Player.playerColors[num]);
 		/*foreach(SpriteRenderer srend in renderers){
 			srend.material.color = colors[num];
 		}*/

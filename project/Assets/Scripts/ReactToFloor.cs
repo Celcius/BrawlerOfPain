@@ -29,7 +29,7 @@ public class ReactToFloor : MonoBehaviour {
         }
 		shadow.gameObject.SetActive(true);
 		if (cell._isBloodied){
-			motor.movement.maxGroundAcceleration = 10;
+			motor.movement.maxGroundAcceleration = 50;
 		} else {
 			motor.movement.maxGroundAcceleration = 100;
 		}

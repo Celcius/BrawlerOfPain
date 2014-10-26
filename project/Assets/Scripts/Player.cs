@@ -48,9 +48,9 @@ public class Player : MonoBehaviour {
 		motor = GetComponent<CharacterMotor> ();
 		trailRend = GetComponent<TrailRenderer>();
 		
-		pickItems = GetComponent<PickItems>();
-		//OnSpawnEvent = DummyOnSpawn;
-		//OnCollision = DummyOnCollision;
+		//pickItems = GetComponent<PickItems>();
+		OnSpawnEvent = DummyOnSpawn;
+		OnCollision = DummyOnCollision;
 	}
 	
 	private void DummyOnSpawn(Player player) {}
@@ -77,7 +77,8 @@ public class Player : MonoBehaviour {
 
 	void handleCollision(Collider other)
 	{	
-		pickItems.HandleCollision(other);
+		OnCollision(other);
+		//pickItems.HandleCollision(other);
 		
 		Debug.Log ("Colliding "+gameObject.name+" with "  + other.gameObject.name);
 		

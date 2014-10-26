@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 
 public class MenuManager : MonoBehaviour {
-    public GameObject MainScreen;
     public GameObject OptionsScreen;
+    public GameObject MainScreen;
     public GameObject EndScreen;
 
     [SerializeField]
@@ -32,9 +32,10 @@ public class MenuManager : MonoBehaviour {
 
     void Start()
     {
-  //      DontDestroyOnLoad(gameObject);
-        MainScreen.SetActive(false);
-        EndScreen.SetActive(false);
+ 
+ //       OptionsScreen.SetActive(true);
+   //     MainScreen.SetActive(false);
+   //     EndScreen.SetActive(false);
 
         _playersText.text = ""+ DataHolder.instance.playerCount;
         _timedText.text = "" + DataHolder.instance.time;

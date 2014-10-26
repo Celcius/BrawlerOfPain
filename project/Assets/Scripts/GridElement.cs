@@ -87,11 +87,16 @@ public class GridElement : MonoBehaviour {
     static GridElement createBrazier(int x, int y, float tileScale)
     {
         GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        GameObject brazier = Instantiate(Resources.Load("Prefabs/Brazier")) as GameObject;
+        brazier.transform.parent = plane.transform;
+        brazier.transform.position = new Vector3(0, 0.5f, 0.5f);
         plane.AddComponent<GridElement>().setGridElement(x, y, tileScale);
         plane.tag = "MapBlock";
       
         plane.renderer.material = (Material)Resources.Load("Materials/Floor") as Material;
-       
+
+
+
         return plane.GetComponent<GridElement>();
     }
 

@@ -10,12 +10,15 @@ public class Spawner : MonoBehaviour {
         _player = ob.GetComponent<Player>();
         _player.setSpawner(this);
         _player.setNum(num);
-        SpriteRenderer []renderers = ob.GetComponentsInChildren<SpriteRenderer>();
+		MeshRenderer []renderers = ob.GetComponentsInChildren<MeshRenderer>();
 		//Color c = srend.material.color;
 		//c = colors[num];
 		renderers[1].material.color = Player.playerColors[num];
-		TrailRenderer trender = ob.GetComponent<TrailRenderer>();
-		trender.material.SetColor ("_TintColor", Player.playerColors[num]);
+		/*TrailRenderer trender = ob.GetComponent<TrailRenderer>();
+		Color newC = Player.playerColors[num];
+		newC.a = 0.1f;
+		trender.material.SetColor ("_TintColor", newC);*/
+		
 		/*foreach(SpriteRenderer srend in renderers){
 			srend.material.color = colors[num];
 		}*/

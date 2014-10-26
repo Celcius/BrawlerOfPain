@@ -6,6 +6,7 @@ public class GridElement : MonoBehaviour {
 
     public const string FLOOR_CODE = "f";
     public const string HOLE_CODE = "o";
+    public const string BRAZIER_CODE = "b";
 
     public bool _isBloodied = false;
     private float _bloodiedIntensity = 0;
@@ -43,6 +44,10 @@ public class GridElement : MonoBehaviour {
         {
             return createHoleGridElement(x, y, tileScale);
         }
+        else if (BRAZIER_CODE.CompareTo(code)==0)
+        {
+            return createBrazier(x, y, tileScale);
+        }
         return null;
     }
 
@@ -52,7 +57,7 @@ public class GridElement : MonoBehaviour {
         if (_bloodiedIntensity < intensity)
         {
             _bloodiedIntensity = intensity;
-            renderer.material.SetFloat("_bloodBlend", _bloodiedIntensity);
+            renderer.material.SetFloat("_bloodBlend", Mathf.Clamp(_bloodiedIntensity,0,1));
         }
             
     }
@@ -62,15 +67,31 @@ public class GridElement : MonoBehaviour {
         GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Cube);
         plane.AddComponent<GridElement>().setGridElement(x, y, tileScale);
         plane.tag = "MapBlock";
-        int rand = Random.Range(0,9);
-        if (rand < 8)
+        int rand = Random.Range(0,12);
+        if (rand < 10)
             plane.renderer.material = (Material)Resources.Load("Materials/Floor") as Material;
-        else
+        else if (rand == 10)
         { 
             plane.renderer.material = (Material)Resources.Load("Materials/crackedFloor") as Material;
             int rotation = Random.Range(0,4) % 4;
             plane.transform.eulerAngles = new Vector3(plane.transform.localRotation.x, 90 * rotation, plane.transform.localRotation.z);
         }
+        else
+        {
+          plane.renderer.material = (Material)Resources.Load("Materials/CircleFloor") as Material;
+          plane.transform.eulerAngles = new Vector3(plane.transform.localRotation.x, -180, plane.transform.localRotation.z);
+        }
+        return plane.GetComponent<GridElement>();
+    }
+
+    static GridElement createBrazier(int x, int y, float tileScale)
+    {
+        GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        plane.AddComponent<GridElement>().setGridElement(x, y, tileScale);
+        plane.tag = "MapBlock";
+      
+        plane.renderer.material = (Material)Resources.Load("Materials/Floor") as Material;
+       
         return plane.GetComponent<GridElement>();
     }
 

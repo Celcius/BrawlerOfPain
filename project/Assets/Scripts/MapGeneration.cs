@@ -130,6 +130,16 @@ public class MapGeneration : MonoBehaviour {
                           map[x, y] = GridElement.FLOOR_CODE;
                 }
             }
+
+        if(MAP_WIDTH > 8 && MAP_HEIGHT > 5)
+        { 
+          map[MAP_WIDTH / 2 + 3, MAP_HEIGHT - HOLE_MARGIN + 1] = GridElement.BRAZIER_CODE;
+          map[MAP_WIDTH / 2 - 3, MAP_HEIGHT - HOLE_MARGIN + 1] = GridElement.BRAZIER_CODE;
+          map[MAP_WIDTH / 2 + 3, HOLE_MARGIN - 1] = GridElement.BRAZIER_CODE;
+          map[MAP_WIDTH / 2 - 3, HOLE_MARGIN - 1] = GridElement.BRAZIER_CODE;
+          map[HOLE_MARGIN - 1, MAP_HEIGHT / 2] = GridElement.BRAZIER_CODE;
+          map[MAP_WIDTH - HOLE_MARGIN + 1, MAP_HEIGHT / 2] = GridElement.BRAZIER_CODE;
+        }
     }
 
     void setupGrid()

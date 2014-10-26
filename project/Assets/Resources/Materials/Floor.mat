@@ -29,16 +29,16 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _gloss
+          name: _normal
         second:
-          m_Texture: {fileID: 2800000, guid: bd2598416ef00c24b9e32fc42d34fb9d, type: 3}
+          m_Texture: {fileID: 2800000, guid: 68aa07421a3a2724e949ea53f348e028, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _normal
+          name: _gloss
         second:
-          m_Texture: {fileID: 2800000, guid: 68aa07421a3a2724e949ea53f348e028, type: 3}
+          m_Texture: {fileID: 2800000, guid: bd2598416ef00c24b9e32fc42d34fb9d, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -80,14 +80,14 @@ Material:
         first:
           name: _bloodTex
         second:
-          m_Texture: {fileID: 2800000, guid: 8c143c322e3cb7546854624a4ef0482f, type: 3}
+          m_Texture: {fileID: 2800000, guid: 98e351568af07f34cb8357c9724d890a, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _node_121
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 98e351568af07f34cb8357c9724d890a, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:

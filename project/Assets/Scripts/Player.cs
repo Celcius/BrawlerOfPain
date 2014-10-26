@@ -35,7 +35,8 @@ public class Player : MonoBehaviour {
 	
 	public SpawnDelegate OnSpawnEvent;
 	public CollisionDelegate OnCollision;
-
+	
+	private PickItems pickItems;
     public static Color[] playerColors = { Color.red, Color.blue, Color.green, Color.yellow };
 
     public Animator HitEffect;
@@ -47,8 +48,9 @@ public class Player : MonoBehaviour {
 		motor = GetComponent<CharacterMotor> ();
 		trailRend = GetComponent<TrailRenderer>();
 		
-		OnSpawnEvent = DummyOnSpawn;
-		OnCollision = DummyOnCollision;
+		pickItems = GetComponent<PickItems>();
+		//OnSpawnEvent = DummyOnSpawn;
+		//OnCollision = DummyOnCollision;
 	}
 	
 	private void DummyOnSpawn(Player player) {}
@@ -75,7 +77,9 @@ public class Player : MonoBehaviour {
 
 	void handleCollision(Collider other)
 	{	
-		OnCollision(other);
+		pickItems.HandleCollision(other);
+		
+		Debug.Log ("Colliding "+gameObject.name+" with "  + other.gameObject.name);
 		
 		Player otherPlayer = other.GetComponent<Player> ();
 		if (otherPlayer == this || otherPlayer == null)

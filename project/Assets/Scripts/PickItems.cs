@@ -21,10 +21,12 @@ public class PickItems : MonoBehaviour {
         return currentItem != null;
     }
 	
-	private void HandleCollision(Collider other)
+	public void HandleCollision(Collider other)
 	{
+		Debug.Log ("HAndling colliion on cueb");
 		PickableItem item = other.GetComponent<PickableItem>();
 		if (item && currentItem == null){
+			Debug.Log("picked up item");
 			currentItem = item;
 			item.collider.enabled = false;
 			item.rigidbody.isKinematic = true;

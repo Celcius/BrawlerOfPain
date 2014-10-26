@@ -2351,7 +2351,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400012, guid: e460f25bb7385e049b25fbf98446cf36, type: 2}
       propertyPath: BLOOD_SPRAY
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e460f25bb7385e049b25fbf98446cf36, type: 2}
@@ -3285,7 +3285,7 @@ MonoBehaviour:
   DEATH_MARGIN: 2
   PLAYER_COUNT: 4
   PLAYER_START_OFFSET: 3
-  BLOOD_SPRAY: 5
+  BLOOD_SPRAY: 6
   SPAWNER_HEIGHT: 2
   _tileScale: 1
   GAME_TIME: 2.5

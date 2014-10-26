@@ -18,6 +18,7 @@ public class LivesController : GameController {
         for (int i = 0; i < players; i++)
         {
             playerLives[i] = lives;
+            board[i] = -1;
         }
         _state = GameState.PLAYING;
 
@@ -39,9 +40,14 @@ public class LivesController : GameController {
                 return true;
             else
             {
-                board[placeIndex] = playerNum;
-
-                if (placeIndex == 1)
+                for (int i = 0; i < board.Length; i++ )
+                {
+                    if (board[i] == playerNum)
+                        return false; // already in board
+                }
+                    board[placeIndex] = playerNum;
+                placeIndex--;
+                if (placeIndex == 0)
                 { 
                     _state = GameState.GAME_OVER;
                     for (int i = 0; i < board.Length; i++ )
@@ -52,8 +58,8 @@ public class LivesController : GameController {
                         }
                         
                     }
-                    placeIndex--;
                 }
+
 
                 return false;
             }

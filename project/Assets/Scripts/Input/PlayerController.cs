@@ -116,6 +116,8 @@ public class PlayerController : MonoBehaviour
 
     public bool pressed(ACTIONS action)
     {
+        if (_actions == null)
+            return false;
         return _actions[action].current > 0;
     }
 

@@ -66,7 +66,7 @@ public class Player : MonoBehaviour {
 
 	void handleCollision(Collider other)
 	{	
-		//OnCollision(other);
+		OnCollision(other);
 		
 		Player otherPlayer = other.GetComponent<Player> ();
 		if (otherPlayer == this || otherPlayer == null)

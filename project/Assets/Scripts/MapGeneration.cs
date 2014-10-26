@@ -103,10 +103,10 @@ public class MapGeneration : MonoBehaviour {
         trap3.transform.position = new Vector3((MAP_WIDTH - trapDiff) * _tileScale - 2* _tileScale, 0.5f, (MAP_HEIGHT - trapDiff) * _tileScale -  1.5f* _tileScale); // topRight
         trap4.transform.position = new Vector3(trapDiff * _tileScale + 0.5f* _tileScale, 0.5f, (MAP_HEIGHT - trapDiff) * _tileScale -1.5f* _tileScale); // Top Left
 
-        if(gameType == GameManager.GameType.TIMER)
+        if(gameType != GameManager.GameType.VIP)
         { 
            GameObject trap5 = Instantiate(Resources.Load("Prefabs/Trap")) as GameObject; 
-         trap5.transform.position = new Vector3((MAP_WIDTH - trapDiff - 1) * _tileScale / 2, -0.5f, (MAP_HEIGHT - trapDiff - 1) * _tileScale / 2);
+            trap5.transform.position = new Vector3((MAP_WIDTH - trapDiff - 1) * _tileScale / 2, -0.5f, (MAP_HEIGHT - trapDiff - 1) * _tileScale / 2);
         }
     }
 
@@ -123,7 +123,7 @@ public class MapGeneration : MonoBehaviour {
                 }
                 else
                 {
-                    if (gameType == GameManager.GameType.TIMER && (x >= MAP_WIDTH / 2 - 1 && x <= MAP_WIDTH / 2 + 1) &&
+                    if (gameType != GameManager.GameType.VIP && (x >= MAP_WIDTH / 2 - 1 && x <= MAP_WIDTH / 2 + 1) &&
                         (y >= MAP_HEIGHT / 2 - 1 && y <= MAP_HEIGHT / 2 + 1))
                              map[x, y] = GridElement.HOLE_CODE;
                     else

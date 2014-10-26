@@ -29,6 +29,8 @@ public class Player : MonoBehaviour {
 	private float _dashingTimer = 0;
 	private bool _canDashAgain = true;
 	private float _canDashTimer = 0;
+	private int hitCounter = 0;
+	private Vector3 dashDirection;
 	
 	public SpawnDelegate OnSpawnEvent;
 	public CollisionDelegate OnCollision;
@@ -73,7 +75,16 @@ public class Player : MonoBehaviour {
 		if (!dashing && !_inputController.justPressed (PlayerController.ACTIONS.ACTION_1)) {
 			return;
 		}
-
+		
+		if (dashing){
+			if (hitCounter < 2)
+			{
+				hitCounter++;
+			} else {
+				return;	
+			}
+		}
+		
 		ImpactReceiver elm = other.GetComponent<ImpactReceiver>();
 
 		if (elm != null) {
@@ -147,12 +158,14 @@ public class Player : MonoBehaviour {
 		
 		if (_dashingTimer > 0){
 			_dashingTimer += Time.deltaTime;
-			if (_dashingTimer > 0.1f)
+			motor.SetVelocity(dashDirection*30);
+			if (_dashingTimer > 0.25f)
 			{
 				motor.SetVelocity(Vector3.zero);
 				_dashingTimer = 0f;
 				dashing = false;
 				animator.SetBool("dashing", false);
+				hitCounter = 0;
 			}
 		}
 		
@@ -165,21 +178,15 @@ public class Player : MonoBehaviour {
 			}
 		}
 		
-		Debug.Log ("can Dash? = " + _canDashAgain);
 		if (_canDashAgain && _inputController.pressed(PlayerController.ACTIONS.ACTION_2)){
 			dashing = true;
 			_canDashAgain = false;
 			_dashingTimer = 0.0001f;
 			_canDashTimer = 0.0001f;
 			animator.SetBool("dashing", true);
-			motor.SetVelocity(directionVector*50);
+			dashDirection = directionVector;
+			motor.SetVelocity(dashDirection*30);
 		}
-		
-		
-		
-		
-		
-		
 		
 		if (animator != null) handleMovementAnimation(dirX, dirY);
 	}

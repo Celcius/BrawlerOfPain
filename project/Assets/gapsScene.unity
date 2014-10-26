@@ -488,7 +488,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 212540555}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -689,7 +689,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: VIP Mode
+  m_Text: Looting
 --- !u!222 &293143349
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1026,10 +1026,11 @@ MonoBehaviour:
   MainScreen: {fileID: 1029693298}
   OptionsScreen: {fileID: 2073707273}
   EndScreen: {fileID: 1113337673}
-  _timedText: {fileID: 0}
-  _scoreText: {fileID: 0}
-  _liveText: {fileID: 0}
-  _vipText: {fileID: 0}
+  _timedText: {fileID: 212540557}
+  _scoreText: {fileID: 1606324889}
+  _liveText: {fileID: 204756388}
+  _vipText: {fileID: 1566153345}
+  _playersText: {fileID: 1605682110}
   _timedMode: 0
   _scoreMode: 1
   _livesMode: 0
@@ -1093,7 +1094,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Live Mode
+  m_Text: Survival
 --- !u!222 &614391413
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1406,7 +1407,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Timed Mode
+  m_Text: Endurance
 --- !u!222 &797003065
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3081,7 +3082,7 @@ GameObject:
   - 222: {fileID: 1566153346}
   - 114: {fileID: 1566153345}
   m_Layer: 5
-  m_Name: CIPText
+  m_Name: VIPText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3147,7 +3148,7 @@ GameObject:
   - 222: {fileID: 1605682111}
   - 114: {fileID: 1605682110}
   m_Layer: 5
-  m_Name: Text
+  m_Name: PlayersText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3242,7 +3243,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1606324887}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -3310,7 +3311,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1624566968}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -3473,7 +3474,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1778190394}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -3553,7 +3554,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Score Mode
+  m_Text: Slaying
 --- !u!222 &1887877569
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3751,7 +3752,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Game Title Here!
+  m_Text: Hero Trials
 --- !u!222 &1977929406
 CanvasRenderer:
   m_ObjectHideFlags: 0

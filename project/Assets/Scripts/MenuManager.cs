@@ -16,6 +16,9 @@ public class MenuManager : MonoBehaviour {
     [SerializeField]
     public Text _vipText;
 
+    [SerializeField]
+    public Text _playersText;
+
     public bool _timedMode = false;
     public bool _scoreMode = true;
     public bool _livesMode = false;
@@ -23,7 +26,7 @@ public class MenuManager : MonoBehaviour {
 
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+  //      DontDestroyOnLoad(gameObject);
         MainScreen.SetActive(false);
         EndScreen.SetActive(false);
     }
@@ -33,24 +36,32 @@ public class MenuManager : MonoBehaviour {
 
     public void StartGame()
     {
+        int playerCount = int.Parse(_playersText.text);
         if (_timedMode)
         {
-            Debug.Log("TIME");
-
-
+          
+            float timer = float.Parse(_timedText.text);
+            Debug.Log("TIME " +timer);
         }
         else if (_scoreMode)
         {
-            Debug.Log("SCORE");
+
+            int score = int.Parse(_scoreText.text);
+            Debug.Log("SCORE " +score);
         }
         else if (_livesMode)
         {
-            Debug.Log("LIVES");
+
+            int lives = int.Parse(_liveText.text);
+            Debug.Log("LIVES " +lives);
         }
         else if (_vIPMode)
         {
-            Debug.Log("VIP");
+
+            int score = int.Parse(_vipText.text);
+            Debug.Log("VIP " + score);
         }
+        Application.LoadLevel("MapCreation");
 
     }
 

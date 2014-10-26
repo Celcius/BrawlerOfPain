@@ -13,6 +13,12 @@ public class Trap : MonoBehaviour {
         }
     }
 
+
+    void OnCollisionStay(Collision other)
+    {
+        OnCollisionEnter(other);
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")

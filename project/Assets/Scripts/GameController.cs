@@ -24,6 +24,7 @@ public abstract class GameController : MonoBehaviour {
         if(_state == GameState.GAME_OVER)
         {
             GameManager.instance.gameOver();
+     
         }
     }
 

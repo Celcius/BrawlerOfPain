@@ -28,8 +28,9 @@ public class VipController : GameController {
     {
         base.Update();
 
+
         elapsedTime += Time.deltaTime*1000;
-        if (elapsedTime >= pingTime)
+        if (elapsedTime >= pingTime &&  _state != GameState.GAME_OVER)
         {
             elapsedTime = 0;
             Player player = GameManager.instance.vipHolder;
@@ -37,7 +38,7 @@ public class VipController : GameController {
             {
                 int num = player.getNum();
                 _playerScores[num]++;
-                if (_playerScores[num] > _maxScore)
+                if (_playerScores[num] >= _maxScore)
                     _state = GameState.GAME_OVER;
             }
         }

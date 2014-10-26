@@ -59,7 +59,7 @@ Material:
         first:
           name: _node_121
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: c6ee1c47ce32d8f41b924ea4231d800d, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:

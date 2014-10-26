@@ -4,7 +4,6 @@ using System.Collections;
 public class Spawner : MonoBehaviour {
 
     Player _player;
-	Color []colors = {Color.red, Color.blue, Color.green, Color.yellow};
     public void spawnPlayer(int num)
     {
 		GameObject ob = (GameObject)Instantiate(Resources.Load("Prefabs/GenericPlayer"));

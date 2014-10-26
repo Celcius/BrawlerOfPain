@@ -12,7 +12,7 @@ public class GameOverPanel : MonoBehaviour {
 
     bool showing = false;
     float elapsedTime = 0.0f;
-    float neededTime = 5*60;
+    float neededTime = 10*60;
 
     void Update ()
     {
@@ -47,7 +47,11 @@ public class GameOverPanel : MonoBehaviour {
         {
             _texts[i].gameObject.SetActive(true);
             if (i < winners.Length)
+            {
                 _texts[i].text = "Player " + (winners[i] +1);
+                _texts[i].color = Player.playerColors[i];
+
+            }
             else
                 _texts[i].gameObject.SetActive(false);
         }

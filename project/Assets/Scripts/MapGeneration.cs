@@ -112,6 +112,7 @@ public class MapGeneration : MonoBehaviour {
 
     void initializeGrid()
     {
+        
         for(int x = 0; x < MAP_WIDTH; x++)
             for(int y = 0; y < MAP_HEIGHT; y++)
             {
@@ -121,7 +122,13 @@ public class MapGeneration : MonoBehaviour {
                     map[x,y] = GridElement.HOLE_CODE;
                 }
                 else
-                    map[x, y] = GridElement.FLOOR_CODE;
+                {
+                    if (gameType == GameManager.GameType.TIMER && (x >= MAP_WIDTH / 2 - 1 && x <= MAP_WIDTH / 2 + 1) &&
+                        (y >= MAP_HEIGHT / 2 - 1 && y <= MAP_HEIGHT / 2 + 1))
+                             map[x, y] = GridElement.HOLE_CODE;
+                    else
+                          map[x, y] = GridElement.FLOOR_CODE;
+                }
             }
     }
 

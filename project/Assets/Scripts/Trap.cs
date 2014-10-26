@@ -25,7 +25,7 @@ public class Trap : MonoBehaviour {
             Player player = obj.GetComponent<Player>();
             if (player == null)
                 player = obj.GetComponentInParent<Player>();
-            if (player != null)
+            if (player != null && !player.GetComponent<ImpactReceiver>().invincible)
             {
                 GameObject ob = Instantiate(Resources.Load("Prefabs/BloodParticlesFinal")) as GameObject;
                 ob.transform.position = transform.position;

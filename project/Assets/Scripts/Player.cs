@@ -154,6 +154,12 @@ public class Player : MonoBehaviour {
 	
 	private void handleMovementAnimation(int dirX, int dirY)
 	{
+		
+		animator.SetBool("jumping", motor.IsJumping());
+		animator.SetBool("grounded", motor.IsGrounded());
+		animator.SetBool("falling",  motor.movement.velocity.y < 0);
+		//Debug.Log ("player direction" + motor.movement.velocity.y);
+		
 		if (dirX == 0 && dirY == 0){
 			animator.SetBool ("Stop", true);
 		} else {

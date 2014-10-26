@@ -36,11 +36,14 @@ public class Player : MonoBehaviour {
 	public CollisionDelegate OnCollision;
 
     public static Color[] playerColors = { Color.red, Color.blue, Color.green, Color.yellow };
+
+    public Animator HitEffect;
+	
+
 	// Use this for initialization
 	void Start () {
 		_inputController = GetComponent<PlayerController>();
 		motor = GetComponent<CharacterMotor> ();
-		animator = GetComponentInChildren<Animator>();
 	}
 
 	// Update is called once per frame
@@ -91,7 +94,10 @@ public class Player : MonoBehaviour {
 		if (elm != null) {
 			Debug.Log (" sending impact");
 			elm.AddImpact(new Vector3( transform.forward.x, 0, transform.forward.z ), 125);
-            
+            if (!elm.invincible)
+            {
+                HitEffect.SetTrigger("Hit");
+            }
 		}
 		Debug.Log ("Colliding "+gameObject.name+" with "  + other.gameObject.name);
         otherPlayer.lastHit = this;

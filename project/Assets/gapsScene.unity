@@ -2017,7 +2017,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hit: {fileID: 8300000, guid: ac07c549ab0f0a84a8d6f602ca651ba9, type: 3}
   Dash: {fileID: 8300000, guid: 75321b74c08256c499e50176cbf3b6c1, type: 3}
-  TrapKill: {fileID: 8300000, guid: 03bec2f958dcab244bbc76c1847218cc, type: 3}
+  TrapDeath: {fileID: 8300000, guid: 03bec2f958dcab244bbc76c1847218cc, type: 3}
+  FallDeath: {fileID: 8300000, guid: 912516ab69ab17249ab85accd1f885b5, type: 3}
 --- !u!1 &1315126341
 GameObject:
   m_ObjectHideFlags: 0

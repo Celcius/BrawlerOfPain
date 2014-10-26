@@ -7,8 +7,8 @@ public class SoundManager : MonoBehaviour {
 
     public AudioClip Hit;
     public AudioClip Dash;
-    public AudioClip TrapKill;
-
+    public AudioClip TrapDeath;
+    public AudioClip FallDeath;
 
     void Awake () {
         if (Instance == null)
@@ -26,7 +26,6 @@ public class SoundManager : MonoBehaviour {
     {
         if (!Instance)
             return;
-        Instance.audio.pitch = 1;
         Instance.audio.PlayOneShot(Instance.Hit);
     }
 
@@ -34,16 +33,21 @@ public class SoundManager : MonoBehaviour {
     {
         if (!Instance)
             return;
-        Instance.audio.pitch = 1;
         Instance.audio.PlayOneShot(Instance.Dash);
     }
 
-    public static void PlayTrapKill()
+    public static void PlayTrapDeath()
     {
         if (!Instance)
             return;
-        Instance.audio.pitch = 0.75f;
-        Instance.audio.PlayOneShot(Instance.TrapKill);
+        Instance.audio.PlayOneShot(Instance.TrapDeath);
+    }
+
+    public static void PlayFallDeath()
+    {
+        if (!Instance)
+            return;
+        Instance.audio.PlayOneShot(Instance.FallDeath);
     }
 
 }

@@ -15,6 +15,7 @@ public class Player : MonoBehaviour {
 	
 	public BoxCollider attackCollider;
     private Spawner _spawner;
+    private TrailRenderer trailRend;
     
     public Animator animator;
 
@@ -44,7 +45,14 @@ public class Player : MonoBehaviour {
 	void Start () {
 		_inputController = GetComponent<PlayerController>();
 		motor = GetComponent<CharacterMotor> ();
+		trailRend = GetComponent<TrailRenderer>();
+		
+		OnSpawnEvent = DummyOnSpawn;
+		OnCollision = DummyOnCollision;
 	}
+	
+	private void DummyOnSpawn(Player player) {}
+	private void DummyOnCollision(Collider colision) {}
 
 	// Update is called once per frame
 	void Update () {
@@ -62,13 +70,11 @@ public class Player : MonoBehaviour {
 
 	void OnTriggerStay(Collider other)
 	{
-		handleCollision (other);
-
-        
+		handleCollision (other); 
 	}
 
 	void handleCollision(Collider other)
-	{
+	{	
 		OnCollision(other);
 		
 		Player otherPlayer = other.GetComponent<Player> ();
@@ -172,6 +178,8 @@ public class Player : MonoBehaviour {
 				_dashingTimer = 0f;
 				dashing = false;
 				animator.SetBool("dashing", false);
+				//trailRend.particleEmitter.emit = false;
+				//StartCoroutine(TurnOffEmitter());
 				hitCounter = 0;
 			}
 		}
@@ -193,9 +201,21 @@ public class Player : MonoBehaviour {
 			animator.SetBool("dashing", true);
 			dashDirection = directionVector;
 			motor.SetVelocity(dashDirection*30);
+			trailRend.time = 2;
+			trailRend.enabled = true;
+			StartCoroutine(TurnOffEmitter());
 		}
 		
 		if (animator != null) handleMovementAnimation(dirX, dirY);
+	}
+	
+	IEnumerator TurnOffEmitter()
+	{
+		while(trailRend.time > 0){
+			trailRend.time -= Time.deltaTime*3;
+			yield return null;
+		}
+		trailRend.enabled = false;
 	}
 
 	Vector3 ProjectOntoPlane (Vector3 v, Vector3 normal) {

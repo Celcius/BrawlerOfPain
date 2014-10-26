@@ -10,10 +10,13 @@ public class Spawner : MonoBehaviour {
         _player = ob.GetComponent<Player>();
         _player.setSpawner(this);
         _player.setNum(num);
-        SpriteRenderer srend = ob.GetComponentInChildren<SpriteRenderer>();
+        SpriteRenderer []renderers = ob.GetComponentsInChildren<SpriteRenderer>();
 		//Color c = srend.material.color;
 		//c = colors[num];
-        srend.material.color = Player.playerColors[num];
+		renderers[1].material.color = Player.playerColors[num];
+		/*foreach(SpriteRenderer srend in renderers){
+			srend.material.color = colors[num];
+		}*/
         respawn();
     }
 	// Update is called once per frame

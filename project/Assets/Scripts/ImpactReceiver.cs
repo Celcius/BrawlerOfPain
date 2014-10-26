@@ -64,14 +64,18 @@ public class ImpactReceiver : MonoBehaviour {
 
     IEnumerator BlinkPlayer(float duration)
 	{
+		Color c;
 		float counter = 0;
 		while(counter < duration){
 			counter += Time.deltaTime;
-			var c = renderer.material.color;
+			c = renderer.material.color;
 			c.a = Mathf.Sin (counter*10)/2 + 0.5f;
 			renderer.material.color = c;
 			yield return null;
 		}
+		c = renderer.material.color;
+		c.a = 1f;
+		renderer.material.color = c;
 	}
 	
 	private void OnSpawn(Player p){

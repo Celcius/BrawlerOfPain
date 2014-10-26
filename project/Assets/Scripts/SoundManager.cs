@@ -22,22 +22,28 @@ public class SoundManager : MonoBehaviour {
         }
     }
 
-    public void PlayHit()
+    public static void PlayHit()
     {
-        audio.pitch = 1;
-        audio.PlayOneShot(Hit);
+        if (!Instance)
+            return;
+        Instance.audio.pitch = 1;
+        Instance.audio.PlayOneShot(Instance.Hit);
     }
 
-    public void PlayDash()
+    public static void PlayDash()
     {
-        audio.pitch = 1;
-        audio.PlayOneShot(Dash);
+        if (!Instance)
+            return;
+        Instance.audio.pitch = 1;
+        Instance.audio.PlayOneShot(Instance.Dash);
     }
 
-    public void PlayTrapKill()
+    public static void PlayTrapKill()
     {
-        audio.pitch = 0.8f;
-        audio.PlayOneShot(TrapKill);
+        if (!Instance)
+            return;
+        Instance.audio.pitch = 0.75f;
+        Instance.audio.PlayOneShot(Instance.TrapKill);
     }
 
 }

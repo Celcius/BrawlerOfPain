@@ -5,32 +5,28 @@ public class Trap : MonoBehaviour {
 
     void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.tag == "Player")
-        {
-            Player player = other.gameObject.GetComponent<Player>();
-            if (player != null)
-            {
-                player.respawn();
-                SoundManager.Instance.PlayTrapKill();
-            }
-        }
+        handleCollision(other.gameObject);
     }
-
 
     void OnCollisionStay(Collision other)
     {
-        OnCollisionEnter(other);
+        handleCollision(other.gameObject);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        handleCollision(other.gameObject);
+    }
+
+    void handleCollision(GameObject obj)
+    {
+        if (obj.tag == "Player")
         {
-            Player player = other.gameObject.GetComponentInParent<Player>();
+            Player player = obj.GetComponent<Player>();
             if (player != null)
             {
+                SoundManager.PlayTrapKill();
                 player.respawn();
-                SoundManager.Instance.PlayTrapKill();
             }
         }
     }

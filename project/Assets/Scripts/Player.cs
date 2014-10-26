@@ -103,7 +103,7 @@ public class Player : MonoBehaviour {
             if (!elm.invincible)
             {
                 HitEffect.SetTrigger("Hit");
-                SoundManager.Instance.PlayHit();
+                SoundManager.PlayHit();
             }
 		}
 		Debug.Log ("Colliding "+gameObject.name+" with "  + other.gameObject.name);
@@ -200,7 +200,7 @@ public class Player : MonoBehaviour {
 			_dashingTimer = 0.0001f;
 			_canDashTimer = 0.0001f;
 			animator.SetBool("dashing", true);
-            SoundManager.Instance.PlayDash();
+            SoundManager.PlayDash();
 			dashDirection = directionVector;
 			motor.SetVelocity(dashDirection*30);
 			trailRend.time = 2;

@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 37f8f01fa400084489998dc6f8c45807
+ShaderImporter:
+  defaultTextures:
+  - _diffuse: {fileID: 2800000, guid: b8ff2547033edd64c8582999893e61bc, type: 3}
+  - _specular: {fileID: 2800000, guid: 2493d25616bbe8e41b01c5dbc09863f5, type: 3}
+  - _normal: {fileID: 2800000, guid: 159745d953f3b75459e4a67d545aad5b, type: 3}
+  - _gloss: {fileID: 2800000, guid: 2233026851e563d40894ce8337d8f0f5, type: 3}
+  userData: 

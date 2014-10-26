@@ -65,6 +65,8 @@ public class MapGeneration : MonoBehaviour {
         setupGrid();
         setupDeathColider();
         setupSpawners();
+        setupTraps();
+
         GameManager.instance.startGame(); // will start Counting
    	}
 	
@@ -72,6 +74,20 @@ public class MapGeneration : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    void setupTraps()
+    {
+        GameObject trap1 = Instantiate(Resources.Load("Prefabs/Trap")) as GameObject;
+        GameObject trap2 = Instantiate(Resources.Load("Prefabs/Trap")) as GameObject;
+        GameObject trap3 = Instantiate(Resources.Load("Prefabs/Trap")) as GameObject;
+        GameObject trap4 = Instantiate(Resources.Load("Prefabs/Trap")) as GameObject;
+
+        float trapDiff = 0.5f;
+        trap1.transform.position = new Vector3(trapDiff * _tileScale -1, 0.5f, trapDiff * _tileScale-2);
+        trap2.transform.position = new Vector3((MAP_WIDTH - trapDiff) * _tileScale - 2, 0.5f, trapDiff * _tileScale - 2);
+        trap3.transform.position = new Vector3((MAP_WIDTH - trapDiff) * _tileScale - 2, 0.5f, (MAP_HEIGHT - trapDiff) * _tileScale - 1);
+        trap4.transform.position = new Vector3(trapDiff * _tileScale - 1, 0.5f, (MAP_HEIGHT - trapDiff) * _tileScale - 1);
+    }
 
     void initializeGrid()
     {
@@ -145,6 +161,19 @@ public class MapGeneration : MonoBehaviour {
             
         }
 
+    }
+
+    public PickableItem createVipToken()
+    {
+        GameObject ob =  Instantiate(Resources.Load("Prefabs/PickableCube")) as GameObject;
+        PickableItem item = ob.GetComponent<PickableItem>();
+        centerItem(item.transform);
+        return item;
+    }
+
+    public void centerItem(Transform trans)
+    {
+        trans.position = new Vector3(MAP_WIDTH / 2 * _tileScale, 2, MAP_HEIGHT / 2 * _tileScale);
     }
 }
 

@@ -27,7 +27,7 @@ public class GameOverPanel : MonoBehaviour {
                  if (InputManager.ActiveDevice.AnyButton.IsPressed || Input.anyKey)
               {
                    showing = false;
-                   Application.LoadLevel(0);
+                   Application.LoadLevel("gapsScene");
                     //GameManager.instance.startGame();
            
               }

@@ -37,6 +37,8 @@ public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        if(!rigidbody.isKinematic)
+            rigidbody.isKinematic = true;
 		handleMovement ();
 
 		if (transform.position.y < MIN_Y)
@@ -186,6 +188,13 @@ public class Player : MonoBehaviour {
     #region Death Functions
     public void respawn()
     {
+      
+        if (GetComponent<ImpactReceiver>().invincible && transform.position.y > MIN_Y)
+            return;
+
+        if(GetComponent<PickItems>().hasItem())
+            GameManager.instance.spawnVIPToken();
+
         GameManager.instance.bloodElementsAtWorldPosition(transform.position.x, transform.position.z);
         GameManager.instance.registerPlayerDeath(_playerNum,this);
         if(_spawner != null && GameManager.instance.canRespawn(_playerNum))
@@ -193,6 +202,12 @@ public class Player : MonoBehaviour {
             _spawner.respawn();
             lastHit = null;
 			OnSpawnEvent(this);
+
+            rigidbody.isKinematic = false;
+            rigidbody.velocity = new Vector3(0,0,0);
+            rigidbody.angularVelocity = new Vector3(0, 0, 0);
+
+
         }
         else if(!GameManager.instance.canRespawn(_playerNum))
         {

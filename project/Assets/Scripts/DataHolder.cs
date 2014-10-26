@@ -11,7 +11,7 @@ public class DataHolder : MonoBehaviour {
     public int score = 20;
     public int lives = 5;
     public int vipScore = 20;
-    public GameManager.GameType gameType = GameManager.GameType.TIMER;
+    public GameManager.GameType gameType = GameManager.GameType.VIP;
 
     bool hasBeenInitialized = false;
 

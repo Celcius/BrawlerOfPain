@@ -26,6 +26,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: jumping
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 3
     m_Name: Base Layer
@@ -98,6 +104,10 @@ Transition:
     m_ConditionEvent: dirY
     m_EventTreshold: 0
     m_ExitTime: .899999976
+  - m_ConditionMode: 2
+    m_ConditionEvent: jumping
+    m_EventTreshold: 0
+    m_ExitTime: .899999976
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
@@ -142,6 +152,10 @@ Transition:
     m_ConditionEvent: dirY
     m_EventTreshold: 0
     m_ExitTime: .899999976
+  - m_ConditionMode: 2
+    m_ConditionEvent: jumping
+    m_EventTreshold: 0
+    m_ExitTime: .899999976
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
@@ -166,6 +180,10 @@ Transition:
     m_ConditionEvent: dirY
     m_EventTreshold: 0
     m_ExitTime: .899999976
+  - m_ConditionMode: 2
+    m_ConditionEvent: jumping
+    m_EventTreshold: 0
+    m_ExitTime: .899999976
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
@@ -188,6 +206,10 @@ Transition:
     m_ExitTime: .899999976
   - m_ConditionMode: 4
     m_ConditionEvent: dirY
+    m_EventTreshold: 0
+    m_ExitTime: .899999976
+  - m_ConditionMode: 2
+    m_ConditionEvent: jumping
     m_EventTreshold: 0
     m_ExitTime: .899999976
   m_Atomic: 1
@@ -254,6 +276,10 @@ Transition:
     m_ConditionEvent: dirY
     m_EventTreshold: 0
     m_ExitTime: .899999976
+  - m_ConditionMode: 2
+    m_ConditionEvent: jumping
+    m_EventTreshold: 0
+    m_ExitTime: .899999976
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
@@ -276,6 +302,10 @@ Transition:
     m_ExitTime: .899999976
   - m_ConditionMode: 3
     m_ConditionEvent: dirY
+    m_EventTreshold: 0
+    m_ExitTime: .899999976
+  - m_ConditionMode: 2
+    m_ConditionEvent: jumping
     m_EventTreshold: 0
     m_ExitTime: .899999976
   m_Atomic: 1
@@ -322,6 +352,10 @@ Transition:
     m_ConditionEvent: dirY
     m_EventTreshold: 0
     m_ExitTime: .899999976
+  - m_ConditionMode: 2
+    m_ConditionEvent: jumping
+    m_EventTreshold: 0
+    m_ExitTime: .899999976
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
@@ -364,6 +398,10 @@ Transition:
     m_ExitTime: .899999976
   - m_ConditionMode: 4
     m_ConditionEvent: dirY
+    m_EventTreshold: 0
+    m_ExitTime: .899999976
+  - m_ConditionMode: 2
+    m_ConditionEvent: jumping
     m_EventTreshold: 0
     m_ExitTime: .899999976
   m_Atomic: 1
@@ -703,25 +741,43 @@ StateMachine:
       second:
       - {fileID: 110104444}
     data:
+      first: {fileID: 110229111}
+      second: []
+    data:
       first: {fileID: 110225534}
       second:
       - {fileID: 110144778}
+    data:
+      first: {fileID: 110259817}
+      second: []
     data:
       first: {fileID: 110246976}
       second:
       - {fileID: 110143681}
     data:
+      first: {fileID: 110288666}
+      second: []
+    data:
       first: {fileID: 110273236}
       second:
       - {fileID: 110108324}
+    data:
+      first: {fileID: 110268049}
+      second: []
     data:
       first: {fileID: 110250237}
       second:
       - {fileID: 110188328}
     data:
+      first: {fileID: 110281950}
+      second: []
+    data:
       first: {fileID: 110228431}
       second:
       - {fileID: 110158952}
+    data:
+      first: {fileID: 110213314}
+      second: []
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: -132, y: 12, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

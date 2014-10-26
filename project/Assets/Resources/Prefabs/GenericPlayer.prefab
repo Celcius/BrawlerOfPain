@@ -150,7 +150,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100140}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -101.057472, y: 92.9709091, z: -73.2223663}
+  m_LocalPosition: {x: 0, y: 7.46950006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400138}
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bbcf062d90579c4fb6a25cf80895893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: 0
+  controller: 1
   Direction: {x: 0, y: 0}
   gamepadNum: 0
 --- !u!114 &11400002
@@ -363,6 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d270707f957a34b198e97745e9cc7326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetBlink: {fileID: 100000}
   invincible: 0
 --- !u!114 &11400006
 MonoBehaviour:

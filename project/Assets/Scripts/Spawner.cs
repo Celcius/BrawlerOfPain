@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour {
         SpriteRenderer []renderers = ob.GetComponentsInChildren<SpriteRenderer>();
 		//Color c = srend.material.color;
 		//c = colors[num];
-		renderers[1].material.color = colors[num];
+		renderers[1].material.color = Player.playerColors[num];
 		/*foreach(SpriteRenderer srend in renderers){
 			srend.material.color = colors[num];
 		}*/

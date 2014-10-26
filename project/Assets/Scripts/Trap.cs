@@ -23,6 +23,8 @@ public class Trap : MonoBehaviour {
         if (obj.tag == "Player")
         {
             Player player = obj.GetComponent<Player>();
+            if (player == null)
+                player = obj.GetComponentInParent<Player>();
             if (player != null)
             {
                 SoundManager.PlayTrapDeath();

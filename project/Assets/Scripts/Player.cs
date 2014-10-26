@@ -276,6 +276,10 @@ public class Player : MonoBehaviour {
         if (GetComponent<ImpactReceiver>().invincible && transform.position.y > MIN_Y)
             return;
 
+
+        GameObject ob = Instantiate(Resources.Load("Prefabs/BloodParticlesFinal")) as GameObject;
+       ob.transform.position = transform.position;
+
         if(GetComponent<PickItems>().hasItem())
             GameManager.instance.spawnVIPToken();
 

@@ -38,7 +38,7 @@ Material:
         first:
           name: _diffuse
         second:
-          m_Texture: {fileID: 2800000, guid: 90b3f73f86b5c594d85ce5902adfa8f0, type: 3}
+          m_Texture: {fileID: 2800000, guid: cf90888bfbba0784db24af652813fc6d, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:

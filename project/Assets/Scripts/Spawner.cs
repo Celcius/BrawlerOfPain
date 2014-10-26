@@ -4,7 +4,6 @@ using System.Collections;
 public class Spawner : MonoBehaviour {
 
     Player _player;
-	Color []colors = {Color.red, Color.blue, Color.green, Color.yellow};
     public void spawnPlayer(int num)
     {
 		GameObject ob = (GameObject)Instantiate(Resources.Load("Prefabs/GenericPlayer"));
@@ -14,7 +13,7 @@ public class Spawner : MonoBehaviour {
         SpriteRenderer srend = ob.GetComponentInChildren<SpriteRenderer>();
 		//Color c = srend.material.color;
 		//c = colors[num];
-		srend.material.color = colors[num];
+        srend.material.color = Player.playerColors[num];
         respawn();
     }
 	// Update is called once per frame

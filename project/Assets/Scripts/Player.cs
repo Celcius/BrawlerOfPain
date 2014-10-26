@@ -34,7 +34,8 @@ public class Player : MonoBehaviour {
 	
 	public SpawnDelegate OnSpawnEvent;
 	public CollisionDelegate OnCollision;
-	
+
+    public static Color[] playerColors = { Color.red, Color.blue, Color.green, Color.yellow };
 	// Use this for initialization
 	void Start () {
 		_inputController = GetComponent<PlayerController>();

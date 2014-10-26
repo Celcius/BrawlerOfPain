@@ -66,7 +66,11 @@ public class GridElement : MonoBehaviour {
         if (rand < 8)
             plane.renderer.material = (Material)Resources.Load("Materials/Floor") as Material;
         else
+        { 
             plane.renderer.material = (Material)Resources.Load("Materials/crackedFloor") as Material;
+            int rotation = Random.Range(0,4) % 4;
+            plane.transform.eulerAngles = new Vector3(plane.transform.localRotation.x, 90 * rotation, plane.transform.localRotation.z);
+        }
         return plane.GetComponent<GridElement>();
     }
 

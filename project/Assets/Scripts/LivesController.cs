@@ -75,6 +75,7 @@ public class LivesController : GameController {
 
     public override int[] getLeaderboard()
     {
+      
         return board;
     }
 

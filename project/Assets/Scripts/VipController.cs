@@ -79,6 +79,7 @@ public class VipController : GameController {
             }
             maxScore = 0;
         }
+
         return board;
     }
 }

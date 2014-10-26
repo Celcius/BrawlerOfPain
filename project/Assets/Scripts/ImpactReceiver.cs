@@ -17,6 +17,8 @@ public class ImpactReceiver : MonoBehaviour {
 	public ImpactDelegate OnImpact;
 	
 	public bool invincible = false;
+
+    private bool waitForImpact = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -36,21 +38,31 @@ public class ImpactReceiver : MonoBehaviour {
 	}
 	// call this function to add an impact force:
 	public void AddImpact(Vector3 dir, float force){
-		if (invincible) return;
+        if (invincible || waitForImpact) return;
 		
 		dir.Normalize();
 		if (dir.y < 0) dir.y = -dir.y; // reflect down force on the ground
 		impact += dir.normalized * force / mass;
-		
+
+        waitForImpact = true;
+        StartCoroutine(WaitForImpact(0.1f));
 		OnImpact();
 	}
-	
-	IEnumerator SpawnTimer(float waitSeconds) {
-		yield return new WaitForSeconds(waitSeconds);
-		invincible = false;
-	}
-	
-	IEnumerator BlinkPlayer(float duration)
+
+
+    IEnumerator SpawnTimer(float waitSeconds)
+    {
+        yield return new WaitForSeconds(waitSeconds);
+        invincible = false;
+    }
+
+    IEnumerator WaitForImpact(float waitSeconds)
+    {
+        yield return new WaitForSeconds(waitSeconds);
+        waitForImpact = false;
+    }
+
+    IEnumerator BlinkPlayer(float duration)
 	{
 		float counter = 0;
 		while(counter < duration){

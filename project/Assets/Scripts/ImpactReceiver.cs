@@ -10,6 +10,8 @@ public class ImpactReceiver : MonoBehaviour {
 	Vector3 impact = Vector3.zero;
 	private CharacterController character;
 	private Player player;
+	
+	public GameObject targetBlink;
 	private SpriteRenderer renderer;
 	
 	public ImpactDelegate OnImpact;
@@ -21,7 +23,7 @@ public class ImpactReceiver : MonoBehaviour {
 		character = GetComponent<CharacterController>();
 		
 		player = GetComponent<Player>();
-		renderer = GetComponentInChildren<SpriteRenderer>();
+		renderer = targetBlink.GetComponent<SpriteRenderer>();
 		player.OnSpawnEvent += OnSpawn;
 	}
 	
@@ -40,8 +42,7 @@ public class ImpactReceiver : MonoBehaviour {
 		if (dir.y < 0) dir.y = -dir.y; // reflect down force on the ground
 		impact += dir.normalized * force / mass;
 		
-		if (OnImpact != null)
-			OnImpact();
+		OnImpact();
 	}
 	
 	IEnumerator SpawnTimer(float waitSeconds) {

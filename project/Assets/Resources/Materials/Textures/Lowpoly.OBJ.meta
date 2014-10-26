@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: 22ed5cfdecdfc8745ab88035a5ed5d8a
+guid: feccbd886734f5448816e0f729cf4a39
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: Box004
+    100000: Lowpoly
     100002: //RootNode
-    400000: Box004
+    400000: Lowpoly
     400002: //RootNode
-    2300000: Box004
-    3300000: Box004
-    4300000: Box004
+    2300000: Lowpoly
+    3300000: Lowpoly
+    4300000: Lowpoly
     9500000: //RootNode
   materials:
     importMaterials: 1
